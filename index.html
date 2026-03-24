@@ -1,0 +1,171 @@
+<html lang="en-GB">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pietro Carrucciu - Personal Website</title>
+    <meta name="description" content="Personal website of Pietro Carrucciu.">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="robots" content="all">
+    <meta content="en_EN" property="og:locale">
+    <meta content="website" property="og:type">
+    <meta content="https://carruc.github.io" property="og:url">
+    <meta content="Pietro Carrucciu" property="og:title">
+    <meta content="Personal Website" property="og:description">
+
+    <link rel="stylesheet" type="text/css" media="all" href="assets/stylesheets/main_free.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="clarity/clarity.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/foundation.min.css">
+    <link href="assets/fontawesome-free-6.6.0-web/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+    <script src="assets/scripts/navbar.js"></script> <!-- Comment to remove table of content. -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            "HTML-CSS": {
+              scale: 95,
+              fonts: ["Gyre-Pagella"],
+              imageFont: null,
+              undefinedFamily: "'Arial Unicode MS', cmbright"
+            },
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                processEscapes: true
+              }
+          });
+    </script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- Title Page -->
+    <!-- Dark Theme Example: Change the background colour dark and change the following div "blog-title" into "blog-title white". -->
+    <div class="container blog main" id="first-content" style="background-color: #fafafa; padding-bottom: 2rem; min-height: 0; height: auto; flex: none;">
+        <div class="blog-title no-cover" style="grid-row: auto; min-height: auto; height: auto;">
+            <div class="blog-intro"
+                style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; padding: 2vh 0;">
+                <h1 class="title" style="text-align: left; padding: 0; margin: 0; font-size: 2rem; width: auto;">Pietro
+                    Carrucciu
+                </h1>
+
+                <div class="info"
+                    style="margin-top: 0; display: flex; flex-direction: row; gap: 1rem; align-items: center; justify-content: flex-end; width: auto;">
+                    <a href="https://linkedin.com/in/pietro-carrucciu" class="button icon" target="_blank"
+                        style="background-color: rgba(0, 0, 0, 0.05); width: fit-content; margin: 0;"> LinkedIn <i
+                            class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/carruc" class="button icon" target="_blank"
+                        style="background-color: rgba(0, 0, 0, 0.05); width: fit-content; margin: 0;">GitHub <i
+                            class="fa-brands fa-github"></i></a>
+                    <a href="https://drive.google.com/file/d/1Cyeki9amILsMXgBwQ_GLpQLQi-4kPVTC/view?usp=sharing" class="button icon" target="_blank"
+                        style="background-color: rgba(0, 0, 0, 0.05); width: fit-content; margin: 0;">Resume <i
+                            class="fa-solid fa-file-pdf"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <p class="text" style="margin-top: 1rem;">
+            I am a Computer Science and Engineering Master's degree student at <strong>Politecnico di Milano</strong>. I
+            study things.
+        </p>
+    </div>
+
+    <style>
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .article-card {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .article-card-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            background-color: #f0f0f0;
+        }
+        .article-card-title {
+            padding: 1rem;
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        @media (max-width: 900px) {
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <div class="container blog main first" id="blog-main">
+        <h1><a href="articles" style="text-decoration: none; color: inherit; font-size: 100%;">Recent Articles <i class="fa-solid fa-chevron-right" style="font-size: 0.5em; vertical-align: middle;"></i></a></h1>
+
+        <div class="articles-grid">
+            <a href="articles/sample-stock-article.html" class="article-card">
+                <img src="assets/figures/clarity.png" alt="Article Image" class="article-card-image">
+                <h3 class="article-card-title">Sample Stock Article</h3>
+            </a>
+            <a href="articles/sample-stock-article.html" class="article-card">
+                <img src="assets/figures/clarity.png" alt="Article Image" class="article-card-image">
+                <h3 class="article-card-title">Another Sample Article</h3>
+            </a>
+            <a href="articles/sample-stock-article.html" class="article-card">
+                <img src="assets/figures/clarity.png" alt="Article Image" class="article-card-image">
+                <h3 class="article-card-title">Third Article Example</h3>
+            </a>
+            <a href="articles/sample-stock-article.html" class="article-card">
+                <img src="assets/figures/clarity.png" alt="Article Image" class="article-card-image">
+                <h3 class="article-card-title">Fourth Article Title</h3>
+            </a>
+            <a href="articles/sample-stock-article.html" class="article-card">
+                <img src="assets/figures/clarity.png" alt="Article Image" class="article-card-image">
+                <h3 class="article-card-title">Fifth Article Here</h3>
+            </a>
+            <a href="articles/sample-stock-article.html" class="article-card">
+                <img src="assets/figures/clarity.png" alt="Article Image" class="article-card-image">
+                <h3 class="article-card-title">Sixth Article Final</h3>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer Page -->
+    <footer>
+        <div class="container blog main" style="padding-top: 0; padding-bottom: 0;">
+            <p style="font-size: 0.85em;">
+                &copy; 2026 Pietro Carrucciu. This website is built on the <a href="https://shikun.io/projects/clarity"
+                    style="font-size: inherit;">Clarity Template</a>, designed
+                by <a href="https://shikun.io/" style="font-size: inherit;">Shikun Liu</a>.
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="clarity/clarity.js"></script>
+    <script src="assets/scripts/main.js"></script>
+
+</html>
+</body>

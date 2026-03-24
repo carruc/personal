@@ -1,9 +1,105 @@
 @import '../stylesheets/master';
 
 // reset all tags
-a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,p,pre,q,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;outline:0;font:inherit;vertical-align:baseline}
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+p,
+pre,
+q,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    vertical-align: baseline
+}
 
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block
+}
 
 
 // general setup
@@ -15,12 +111,31 @@ body {
     min-height: 100vh;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, code, pre, ol, ul, li {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: $black;
     line-height: 1.6;
     font-weight: 300;
-    font-size:$medium-font-size;
-    font-family: $default-sans, serif;
+    font-size: $medium-font-size;
+    font-family: $heading-font, sans-serif;
+}
+
+p,
+a,
+code,
+pre,
+ol,
+ul,
+li {
+    color: $black;
+    line-height: 1.6;
+    font-weight: 300;
+    font-size: $medium-font-size;
+    font-family: $default-sans, sans-serif;
 }
 
 a {
@@ -29,6 +144,7 @@ a {
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
+
     &:hover {
         color: inherit;
 
@@ -89,7 +205,7 @@ svg {
 }
 
 // selection styling
-.container{
+.container {
     padding-right: calc(6vw - (100vw - 100%));
     padding-left: 6vw;
     flex: 1;
@@ -98,28 +214,43 @@ svg {
 ::selection {
     color: white;
     background: $black;
-  }
+}
 
 @media screen and (max-width: $small-device) {
-    a, p, td, th, tr, code, pre, ol, ul, li, div  {
+
+    a,
+    p,
+    td,
+    th,
+    tr,
+    code,
+    pre,
+    ol,
+    ul,
+    li,
+    div {
         font-size: $extra-small-font-size;
     }
+
     h1 {
         font-size: $large-font-size;
         line-height: 1.2;
         padding: 1.5vh 0;
         font-weight: 700;
+
         &.title {
             font-weight: 500;
             font-size: $extra-large-font-size;
         }
     }
+
     h2 {
         line-height: 1.2;
         padding: 1.5vh 0;
         font-weight: 700;
         font-size: $medium-font-size;
     }
+
     h3 {
         font-weight: 700;
         line-height: 1.2;
@@ -134,9 +265,21 @@ svg {
         padding-right: calc(8.5vw - (100vw - 100%));
         padding-left: 8.5vw;
     }
-    a, p, td, th, tr, code, pre, ol, ul, li, div  {
+
+    a,
+    p,
+    td,
+    th,
+    tr,
+    code,
+    pre,
+    ol,
+    ul,
+    li,
+    div {
         font-size: $small-font-size;
     }
+
     h1 {
         font-size: $large-font-size;
         line-height: 1.2;
@@ -149,12 +292,14 @@ svg {
             font-size: $extra-large-font-size;
         }
     }
+
     h2 {
         line-height: 1.2;
         padding: 2vh 0;
         font-weight: 700;
         font-size: $medium-font-size;
     }
+
     h3 {
         font-weight: 700;
         line-height: 1.2;
@@ -168,7 +313,18 @@ svg {
         padding-right: calc(12vw - (100vw - 100%));
         padding-left: 12vw;
     }
-    a, p, td, th, tr, code, pre, ol, ul, li, div  {
+
+    a,
+    p,
+    td,
+    th,
+    tr,
+    code,
+    pre,
+    ol,
+    ul,
+    li,
+    div {
         font-size: $small-font-size;
     }
 
@@ -184,12 +340,14 @@ svg {
             font-size: $extra-large-font-size;
         }
     }
+
     h2 {
         line-height: 1.2;
         padding: 1vh 0;
         font-weight: 700;
         font-size: $medium-font-size;
     }
+
     h3 {
         font-weight: 700;
         line-height: 1.2;
@@ -203,7 +361,18 @@ svg {
         padding-right: calc(15vw - (100vw - 100%));
         padding-left: 15vw;
     }
-    a, p, td, th, tr, code, pre, ol, ul, li, div {
+
+    a,
+    p,
+    td,
+    th,
+    tr,
+    code,
+    pre,
+    ol,
+    ul,
+    li,
+    div {
         font-size: $small-medium-font-size;
     }
 
@@ -219,12 +388,14 @@ svg {
             font-size: $extra-extra-large-font-size;
         }
     }
+
     h2 {
         line-height: 1.2;
         padding: 1vh 0;
         font-weight: 700;
         font-size: $large-font-size;
     }
+
     h3 {
         font-weight: 700;
         line-height: 1.2;
@@ -238,7 +409,18 @@ svg {
         padding-right: calc(18vw - (100vw - 100%));
         padding-left: 18vw;
     }
-    a, p, td, th, tr, code, pre, ol, ul, li, div  {
+
+    a,
+    p,
+    td,
+    th,
+    tr,
+    code,
+    pre,
+    ol,
+    ul,
+    li,
+    div {
         font-size: $medium-font-size;
     }
 
@@ -254,12 +436,14 @@ svg {
             font-size: $super-large-font-size;
         }
     }
+
     h2 {
         line-height: 1.2;
         padding: 1.5vh 0;
         font-weight: 700;
         font-size: $large-font-size;
     }
+
     h3 {
         font-weight: 700;
         line-height: 1.2;
@@ -273,7 +457,18 @@ svg {
         padding-right: calc(22vw - (100vw - 100%));
         padding-left: 22vw;
     }
-    a, p, td, th, tr, code, pre, ol, ul, li, div  {
+
+    a,
+    p,
+    td,
+    th,
+    tr,
+    code,
+    pre,
+    ol,
+    ul,
+    li,
+    div {
         font-size: $medium-font-size;
     }
 
@@ -289,12 +484,14 @@ svg {
             font-size: $super-large-font-size;
         }
     }
+
     h2 {
         line-height: 1.2;
         padding: 1.5vh 0;
         font-weight: 700;
         font-size: $large-font-size;
     }
+
     h3 {
         font-weight: 700;
         line-height: 1.2;
@@ -310,7 +507,17 @@ svg {
         padding-left: 24vw;
     }
 
-    a, p, td, th, tr, code, pre, ol, ul, li, div  {
+    a,
+    p,
+    td,
+    th,
+    tr,
+    code,
+    pre,
+    ol,
+    ul,
+    li,
+    div {
         font-size: $large-medium-font-size;
     }
 
@@ -326,12 +533,14 @@ svg {
             font-size: $super-large-font-size;
         }
     }
+
     h2 {
         line-height: 1.2;
         padding: 1.5vh 0;
         font-weight: 700;
         font-size: $large-font-size;
     }
+
     h3 {
         font-weight: 700;
         line-height: 1.2;
@@ -389,23 +598,24 @@ footer {
 div.container.blog#first-content {
     padding-top: 2vh;
     background-color: $gray-5;
+
     div.blog-title {
         display: grid;
         grid-template-columns: 1fr;
         grid-row: 50vh;
-        
+
         &.white * {
             color: white;
-    
+
             &::selection {
                 color: $black !important;
                 background: white !important;
             }
-    
+
             .link * {
                 color: $white !important;
             }
-    
+
             .info {
                 p {
                     color: $white !important;
@@ -450,6 +660,7 @@ div.container.blog#first-content {
             align-items: center;
             justify-content: flex-end;
             padding: 2vh 0;
+
             img.foreground {
                 position: relative;
                 z-index: 2;
@@ -467,23 +678,25 @@ div.container.blog#first-content {
 }
 
 div.container.blog {
-    p.text{
-            padding: 1.5vh 0;
-            font-family: $default-serif, sans-serif;
+    p.text {
+        padding: 1.5vh 0;
+        font-family: $default-serif, sans-serif;
     }
 
     p.text:last-child {
         padding-bottom: 0;
     }
 
-    ul, ol {
+    ul,
+    ol {
         font-family: inherit;
         font-style: inherit;
         font-weight: inherit;
         padding: 0;
+
         li {
-            p.text{
-                padding: 0vh 0 1.5vh 0 !important; 
+            p.text {
+                padding: 0vh 0 1.5vh 0 !important;
             }
         }
     }
@@ -500,13 +713,14 @@ div.container.blog {
         }
 
         a {
-            font-size:inherit;
+            font-size: inherit;
             color: inherit;
         }
 
         &.inline {
             padding: 1.5vh 0 !important;
             font-style: italic;
+
             &.center {
                 text-align: center;
             }
@@ -530,12 +744,14 @@ div.container.blog {
     }
 
     &.main {
-       padding: 0.5vh 6vw;
-       &.comment {
+        padding: 0.5vh 6vw;
+
+        &.comment {
             .content-comment {
                 display: none;
             }
         }
+
         &.inline {
             padding-top: 0;
             padding-bottom: 1vh;
@@ -544,6 +760,7 @@ div.container.blog {
 
     &.large {
         padding: 0.5vh 6vw;
+
         &.inline {
             padding-top: 0;
             padding-bottom: 1vh;
@@ -552,6 +769,7 @@ div.container.blog {
 
     &.extra-large {
         padding: 0.5vh 6vw;
+
         &.inline {
             padding-top: 0;
             padding-bottom: 1vh;
@@ -560,6 +778,7 @@ div.container.blog {
 
     &.extra-extra-large {
         padding: 0.5vh 6vw;
+
         &.inline {
             padding-top: 0;
             padding-bottom: 1vh;
@@ -568,6 +787,7 @@ div.container.blog {
 
     &.max {
         padding: 0.5vh 0vw;
+
         &.inline {
             padding-top: 0;
             padding-bottom: 1vh;
@@ -576,13 +796,15 @@ div.container.blog {
 
     &.gray {
         background-color: $gray-5;
+
         p.caption {
             padding-bottom: 0;
         }
     }
 
     &.gray-linear {
-        background: linear-gradient(to bottom, $gray-5 0%,white 10%, white 90%, $gray-5 100%);
+        background: linear-gradient(to bottom, $gray-5 0%, white 10%, white 90%, $gray-5 100%);
+
         p.caption {
             padding-bottom: 0;
         }
@@ -594,11 +816,12 @@ div.container.blog {
 @media screen and (min-width: $small-device) {
     div.container.blog#first-content {
         padding-top: 3vh;
+
         div.blog-title {
             grid-template-columns: 1fr 1fr;
             column-gap: 2vw;
 
-            .blog-cover{
+            .blog-cover {
                 margin: 0 0 0 auto;
                 width: 90%;
                 padding: 3vh 0;
@@ -618,11 +841,12 @@ div.container.blog {
                 .blog-intro {
                     padding: 6vh 6vw;
                 }
-                
+
                 h1 {
                     padding: 0 2%;
                     text-align: center;
                 }
+
                 p.author {
                     padding: 10px 2%;
                     text-align: center;
@@ -633,17 +857,17 @@ div.container.blog {
                     justify-content: space-around;
                 }
             }
-    
+
         }
     }
-    
+
     div.container.blog {
         &.first {
             margin-top: 2vh;
         }
-    
+
         &.main {
-           padding: 1vh 15vw;
+            padding: 1vh 15vw;
 
             &.comment {
                 padding-left: 15vw;
@@ -656,11 +880,11 @@ div.container.blog {
                 }
             }
         }
-    
+
         &.large {
             padding: 1vh 10vw;
         }
-    
+
         &.extra-large {
             padding: 1vh 8vw;
         }
@@ -675,11 +899,12 @@ div.container.blog {
 @media screen and (min-width: $medium-device) {
     div.container.blog#first-content {
         padding-top: 4vh;
+
         div.blog-title {
             grid-template-columns: 1fr 1fr;
             grid-row: 75vh;
             column-gap: 3vw;
-    
+
             .blog-intro {
                 display: flex;
                 flex-direction: column;
@@ -694,36 +919,37 @@ div.container.blog {
                     padding: 6vh 7.5vw;
                 }
             }
-            
+
             .blog-cover {
                 padding: 3vh 0;
             }
         }
     }
-    
+
     div.container.blog {
         &.first {
             margin-top: 3vh;
         }
-    
-        &.main {
-           padding: 1.5vh 20vw;
 
-           &.comment {
+        &.main {
+            padding: 1.5vh 20vw;
+
+            &.comment {
                 padding-left: 20vw;
                 padding-right: 0vw;
                 display: grid;
                 grid-template-columns: 60vw 18vw;
+
                 .content-comment {
                     display: none;
                 }
             }
         }
-    
+
         &.large {
             padding: 1.5vh 15vw;
         }
-    
+
         &.extra-large {
             padding: 1.5vh 8.5vw;
         }
@@ -738,19 +964,20 @@ div.container.blog {
 @media screen and (min-width: $large-device) {
     div.container.blog#first-content {
         padding-top: 6vh;
+
         div.blog-title {
             grid-template-columns: 1fr 1fr;
             grid-row: 75vh;
             column-gap: 4vw;
-    
+
             .blog-intro {
                 padding: 5vh 0;
-    
+
                 p {
                     padding: 1.5vh 0;
                 }
             }
-    
+
             &.no-cover {
                 grid-template-columns: 1fr;
 
@@ -764,16 +991,16 @@ div.container.blog {
             }
         }
     }
-    
+
     div.container.blog {
         &.first {
             margin-top: 4vh;
         }
-    
-        &.main {
-           padding: 2vh 24vw;
 
-           &.comment {
+        &.main {
+            padding: 2vh 24vw;
+
+            &.comment {
                 padding-left: 24vw;
                 padding-right: 0vw;
                 display: grid;
@@ -784,11 +1011,11 @@ div.container.blog {
                 }
             }
         }
-    
+
         &.large {
             padding: 2vh 16vw;
         }
-    
+
         &.extra-large {
             padding: 2vh 12vw;
         }
@@ -806,10 +1033,10 @@ div.container.blog {
             grid-template-columns: 1fr 1fr;
             grid-row: 75vh;
             column-gap: 4vw;
-    
+
             .blog-intro {
                 padding: 5vh 0;
-    
+
                 p {
                     padding: 1.5vh 0;
                 }
@@ -822,33 +1049,33 @@ div.container.blog {
                     padding: 6vh 9vw;
                 }
             }
-    
+
             .blog-cover {
                 padding: 5vh 0;
             }
         }
     }
-    
+
     div.container.blog {
         &.first {
             margin-top: 5vh;
         }
-    
-        &.main {
-           padding: 2vh 27vw;
 
-           &.comment {
-               padding-left: 27vw;
-               padding-right: 0vw;
-               display: grid;
-               grid-template-columns: 50vw 23vw;
-           }
+        &.main {
+            padding: 2vh 27vw;
+
+            &.comment {
+                padding-left: 27vw;
+                padding-right: 0vw;
+                display: grid;
+                grid-template-columns: 50vw 23vw;
+            }
         }
-    
+
         &.large {
             padding: 2vh 22vw;
         }
-    
+
         &.extra-large {
             padding: 2vh 18vw;
         }
@@ -867,15 +1094,15 @@ div.container.blog {
             grid-template-columns: 1fr 1fr;
             grid-row: 65vh;
             column-gap: 5vw;
-    
+
             .blog-intro {
                 padding: 5vh 0;
-    
+
                 p {
                     padding: 1.5vh 0;
                 }
             }
-    
+
             &.no-cover {
                 grid-template-columns: 1fr;
 
@@ -889,27 +1116,27 @@ div.container.blog {
             }
         }
     }
-    
+
     div.container.blog {
         &.first {
             margin-top: 5vh;
         }
-    
-        &.main {
-           padding: 2vh 30vw;
 
-           &.comment {
-               padding-left: 30vw;
-               padding-right: 0vw;
-               display: grid;
-               grid-template-columns: 50vw 23vw;
-           }
+        &.main {
+            padding: 2vh 30vw;
+
+            &.comment {
+                padding-left: 30vw;
+                padding-right: 0vw;
+                display: grid;
+                grid-template-columns: 50vw 23vw;
+            }
         }
-    
+
         &.large {
             padding: 2vh 26vw;
         }
-    
+
         &.extra-large {
             padding: 2vh 22vw;
         }
@@ -928,10 +1155,10 @@ div.container.blog {
             grid-template-columns: 1fr 1fr;
             grid-row: 65vh;
             column-gap: 6vw;
-    
+
             .blog-intro {
                 padding: 5vh 0;
-    
+
                 p {
                     padding: 1.5vh 0;
                 }
@@ -950,27 +1177,27 @@ div.container.blog {
             }
         }
     }
-    
+
     div.container.blog {
         &.first {
             margin-top: 5vh;
         }
-    
-        &.main {
-           padding: 2vh 32vw;
 
-           &.comment {
-               padding-left: 32vw;
-               padding-right: 0vw;
-               display: grid;
-               grid-template-columns: 50vw 23vw;
-           }
+        &.main {
+            padding: 2vh 32vw;
+
+            &.comment {
+                padding-left: 32vw;
+                padding-right: 0vw;
+                display: grid;
+                grid-template-columns: 50vw 23vw;
+            }
         }
-    
+
         &.large {
             padding: 2vh 28vw;
         }
-    
+
         &.extra-large {
             padding: 2vh 24vw;
         }
@@ -988,15 +1215,15 @@ div.container.blog {
             grid-template-columns: 1fr 1fr;
             grid-row: 75vh;
             column-gap: 7vw;
-    
+
             .blog-intro {
                 padding: 5vh 0;
-    
+
                 p {
                     padding: 1.5vh 0;
                 }
             }
-    
+
             &.no-cover {
                 grid-template-columns: 1fr;
 
@@ -1010,27 +1237,27 @@ div.container.blog {
             }
         }
     }
-    
+
     div.container.blog {
         &.first {
             margin-top: 5vh;
         }
-    
-        &.main {
-           padding: 2vh 38vw;
 
-           &.comment {
-               padding-left: 38vw;
-               padding-right: 0vw;
-               display: grid;
-               grid-template-columns: 50vw 23vw;
-           }
+        &.main {
+            padding: 2vh 38vw;
+
+            &.comment {
+                padding-left: 38vw;
+                padding-right: 0vw;
+                display: grid;
+                grid-template-columns: 50vw 23vw;
+            }
         }
-    
+
         &.large {
             padding: 2vh 32vw;
         }
-    
+
         &.extra-large {
             padding: 2vh 28vw;
         }
@@ -1043,8 +1270,11 @@ div.container.blog {
 
 
 /* ======================== Button ===================== */
-input[type="submit"], input[type="reset"], input[type="button"],
-button, .button {
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.button {
     background-color: $gray-10;
     border-radius: 10px;
     padding: 0.75em 1em;
@@ -1052,7 +1282,7 @@ button, .button {
     color: $black;
     cursor: pointer;
     display: inline-flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     font-size: 0.7em;
     font-weight: 700;
@@ -1074,8 +1304,8 @@ button, .button {
         opacity: 0.5;
         background-color: $gray-10;
         color: $black;
-    } 
-    
+    }
+
     &.icon {
         i {
             font-size: 1.2em;
@@ -1100,9 +1330,14 @@ button, .button {
 }
 
 @media screen and (max-width: $medium-device) {
-    input[type="submit"], input[type="reset"], input[type="button"],
-    button, .button {
+
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"],
+    button,
+    .button {
         font-size: 0.6em;
+
         &.icon {
             i {
                 font-size: 1.2em;
@@ -1114,12 +1349,14 @@ button, .button {
 /* ======================== Slide Menu ===================== */
 
 .slide-menu {
-    display: table;  
+    display: table;
     margin: 0 auto;
     padding-bottom: 2vh;
-    .dots{
+
+    .dots {
         margin-bottom: -10px;
         user-select: none;
+
         .dot {
             position: relative;
             appearance: none;
@@ -1129,21 +1366,23 @@ button, .button {
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            margin: 15px ;
+            margin: 15px;
             transition: all .2s ease-in-out;
 
-            &:after{
+            &:after {
                 content: "";
                 position: absolute;
                 left: -15px;
                 top: -15px;
                 width: 40px;
-                height:40px;
+                height: 40px;
                 border-radius: 50%;
-            } 
+            }
+
             &:hover {
                 transform: scale(1.4);
             }
+
             &.active {
                 background-color: #E2a3a3;
                 transform: scale(1.4);
@@ -1157,11 +1396,15 @@ button, .button {
 /* ======================== Table ===================== */
 .table-wrapper {
     overflow: scroll;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
     padding-bottom: 1vh;
 }
-.table-wrapper::-webkit-scrollbar { /* WebKit */
+
+.table-wrapper::-webkit-scrollbar {
+    /* WebKit */
     width: 0;
     height: 0;
 }
@@ -1170,18 +1413,24 @@ table {
     margin: 0.5vh 0;
     width: 100%;
     font-family: $default-sans, sans-serif;
+
     a {
         font-size: inherit;
     }
-    th, td{
+
+    th,
+    td {
         font-size: 85%;
+
         b {
             font-weight: 900;
         }
     }
-    thead{
+
+    thead {
         font-weight: 700;
     }
+
     tbody tr {
         border: solid 1px $gray-100;
         border-left: 0;
@@ -1190,7 +1439,7 @@ table {
         &:nth-child(2n + 1) {
             background-color: $gray-10;
         }
-        
+
         &:first-child {
             border-top: solid 2px white;
         }
@@ -1204,12 +1453,13 @@ table {
         &.gray {
             background-color: $gray-10 !important;
         }
+
         &.nogray {
             background-color: $gray-5 !important;
         }
     }
 
-    tbody.center{
+    tbody.center {
         td {
             text-align: center;
         }
@@ -1288,11 +1538,12 @@ pre code {
 
 /* ======================== Selection ===================== */
 select {
-    border-color:transparent;
-    border-radius:5px;
-    padding:5px 3px;;
+    border-color: transparent;
+    border-radius: 5px;
+    padding: 5px 3px;
+    ;
     background-color: $gray-10;
-    display:inline;
+    display: inline;
     line-height: inherit;
     font-size: inherit;
     font-style: inherit;
@@ -1305,20 +1556,23 @@ select {
     height: 30px;
     text-underline-offset: 1px;
     width: inherit;
-    option{
+
+    option {
         white-space: nowrap;
         overflow: hidden;
     }
-    &:hover{
+
+    &:hover {
         cursor: pointer;
     }
-    &:after{
+
+    &:after {
         content: "";
         position: absolute;
         right: 10px;
         top: 3px;
-        width: 0; 
-        height: 0; 
+        width: 0;
+        height: 0;
         border-left: 10px solid transparent;
         border-right: 10px solid transparent;
         border-top: 10px solid #333;
@@ -1333,23 +1587,26 @@ select {
     --divider-color: #000;
     --default-handle-width: clamp(10px, 5vw, 40px);
     --default-handle-color: #000;
-    &.white{
+
+    &.white {
         --divider-color: #fff;
         --default-handle-color: #fff;
     }
+
     img {
         padding: 0 !important;
     }
 }
 
-.before, .after {
+.before,
+.after {
     margin: 0;
 }
 
 .before figcaption {
     left: 8px;
 }
-  
+
 .after figcaption {
     right: 8px;
 }
@@ -1365,57 +1622,69 @@ select {
     top: 99%;
     transform: translateY(-100%);
     line-height: 100%;
+
     &.white {
-        color:$white;
+        color: $white;
     }
 }
 
 /* ======================== Video Control ===================== */
-.video-control{
-    display:flex;
+.video-control {
+    display: flex;
     justify-content: center;
     padding: 5px 0;
     gap: 10px;
 }
 
-.video-speed{
-    opacity:0;
+.video-speed {
+    opacity: 0;
+
     &.fade-in-out {
         animation: fadeInOut 1.4s linear forwards;
     }
 }
 
-.video-caption{
+.video-caption {
     padding-top: 20px;
     display: flex;
     justify-content: space-between;
 }
 
 @keyframes fadeInOut {
-    0% { opacity:0; }
-    50% { opacity:1; } 
-    100% { opacity:0; } 
-   }
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
 
 
 /* ======================== Slide Show Control ===================== */
-.slideshow .navigation{
-    display:flex;
+.slideshow .navigation {
+    display: flex;
     justify-content: center;
     padding: 20px 0;
     gap: 10px;
 }
 
-.slideshow .slider{
-	position: relative;
-	width: 100%;
-	height: 440px;
+.slideshow .slider {
+    position: relative;
+    width: 100%;
+    height: 440px;
     padding-bottom: 20px;
-	overflow: hidden;
-    &:hover{
+    overflow: hidden;
+
+    &:hover {
         cursor: pointer;
     }
-    & .slider-item{
+
+    & .slider-item {
         width: 400px;
         height: auto;
         position: absolute;

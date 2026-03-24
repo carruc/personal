@@ -24,7 +24,102 @@
   font-weight: bold;
   src: url("../fonts/Charter/charter_bold_italic.woff2") format("woff2");
 }
-a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, p, pre, q, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+@font-face {
+  font-family: "Funnel Sans";
+  src: url("../fonts/Funnel%20Sans/FunnelSans[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Funnel Sans";
+  src: url("../fonts/Funnel%20Sans/FunnelSans-Italic[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Funnel Display";
+  src: url("../fonts/Funnel%20Display/FunnelDisplay[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+}
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+p,
+pre,
+q,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -33,7 +128,17 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
   vertical-align: baseline;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 
@@ -44,12 +149,31 @@ body {
   min-height: 100vh;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, code, pre, ol, ul, li {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #353535;
   line-height: 1.6;
   font-weight: 300;
   font-size: 18px;
-  font-family: "Poppins", serif;
+  font-family: "Funnel Display", sans-serif;
+}
+
+p,
+a,
+code,
+pre,
+ol,
+ul,
+li {
+  color: #353535;
+  line-height: 1.6;
+  font-weight: 300;
+  font-size: 18px;
+  font-family: "Funnel Sans", sans-serif;
 }
 
 a {
@@ -120,18 +244,23 @@ svg {
   flex: 1;
 }
 
-::-moz-selection {
-  color: white;
-  background: #353535;
-}
-
 ::selection {
   color: white;
   background: #353535;
 }
 
 @media screen and (max-width: 769px) {
-  a, p, td, th, tr, code, pre, ol, ul, li, div {
+  a,
+  p,
+  td,
+  th,
+  tr,
+  code,
+  pre,
+  ol,
+  ul,
+  li,
+  div {
     font-size: 15px;
   }
   h1 {
@@ -162,7 +291,17 @@ svg {
     padding-right: calc(8.5vw - (100vw - 100%));
     padding-left: 8.5vw;
   }
-  a, p, td, th, tr, code, pre, ol, ul, li, div {
+  a,
+  p,
+  td,
+  th,
+  tr,
+  code,
+  pre,
+  ol,
+  ul,
+  li,
+  div {
     font-size: 16px;
   }
   h1 {
@@ -194,7 +333,17 @@ svg {
     padding-right: calc(12vw - (100vw - 100%));
     padding-left: 12vw;
   }
-  a, p, td, th, tr, code, pre, ol, ul, li, div {
+  a,
+  p,
+  td,
+  th,
+  tr,
+  code,
+  pre,
+  ol,
+  ul,
+  li,
+  div {
     font-size: 16px;
   }
   h1 {
@@ -226,7 +375,17 @@ svg {
     padding-right: calc(15vw - (100vw - 100%));
     padding-left: 15vw;
   }
-  a, p, td, th, tr, code, pre, ol, ul, li, div {
+  a,
+  p,
+  td,
+  th,
+  tr,
+  code,
+  pre,
+  ol,
+  ul,
+  li,
+  div {
     font-size: 17px;
   }
   h1 {
@@ -258,7 +417,17 @@ svg {
     padding-right: calc(18vw - (100vw - 100%));
     padding-left: 18vw;
   }
-  a, p, td, th, tr, code, pre, ol, ul, li, div {
+  a,
+  p,
+  td,
+  th,
+  tr,
+  code,
+  pre,
+  ol,
+  ul,
+  li,
+  div {
     font-size: 18px;
   }
   h1 {
@@ -290,7 +459,17 @@ svg {
     padding-right: calc(22vw - (100vw - 100%));
     padding-left: 22vw;
   }
-  a, p, td, th, tr, code, pre, ol, ul, li, div {
+  a,
+  p,
+  td,
+  th,
+  tr,
+  code,
+  pre,
+  ol,
+  ul,
+  li,
+  div {
     font-size: 18px;
   }
   h1 {
@@ -322,7 +501,17 @@ svg {
     padding-right: calc(24vw - (100vw - 100%));
     padding-left: 24vw;
   }
-  a, p, td, th, tr, code, pre, ol, ul, li, div {
+  a,
+  p,
+  td,
+  th,
+  tr,
+  code,
+  pre,
+  ol,
+  ul,
+  li,
+  div {
     font-size: 20px;
   }
   h1 {
@@ -397,10 +586,6 @@ div.container.blog#first-content div.blog-title {
 div.container.blog#first-content div.blog-title.white * {
   color: white;
 }
-div.container.blog#first-content div.blog-title.white *::-moz-selection {
-  color: #353535 !important;
-  background: white !important;
-}
 div.container.blog#first-content div.blog-title.white *::selection {
   color: #353535 !important;
   background: white !important;
@@ -424,7 +609,7 @@ div.container.blog#first-content div.blog-title .blog-intro p.author {
   line-height: 1.2;
 }
 div.container.blog#first-content div.blog-title .blog-intro p.abstract {
-  font-family: "Poppins";
+  font-family: "Funnel Sans";
   font-weight: 400;
   padding: 1vh 0;
 }
@@ -457,18 +642,20 @@ div.container.blog#first-content div.blog-title .blog-cover img.background {
 
 div.container.blog p.text {
   padding: 1.5vh 0;
-  font-family: "Charter", sans-serif;
+  font-family: "Funnel Sans", sans-serif;
 }
 div.container.blog p.text:last-child {
   padding-bottom: 0;
 }
-div.container.blog ul, div.container.blog ol {
+div.container.blog ul,
+div.container.blog ol {
   font-family: inherit;
   font-style: inherit;
   font-weight: inherit;
   padding: 0;
 }
-div.container.blog ul li p.text, div.container.blog ol li p.text {
+div.container.blog ul li p.text,
+div.container.blog ol li p.text {
   padding: 0vh 0 1.5vh 0 !important;
 }
 div.container.blog p.caption {
@@ -560,8 +747,7 @@ div.container.blog.gray-linear p.caption {
   }
   div.container.blog#first-content div.blog-title {
     grid-template-columns: 1fr 1fr;
-    -moz-column-gap: 2vw;
-         column-gap: 2vw;
+    column-gap: 2vw;
   }
   div.container.blog#first-content div.blog-title .blog-cover {
     margin: 0 0 0 auto;
@@ -624,8 +810,7 @@ div.container.blog.gray-linear p.caption {
   div.container.blog#first-content div.blog-title {
     grid-template-columns: 1fr 1fr;
     grid-row: 75vh;
-    -moz-column-gap: 3vw;
-         column-gap: 3vw;
+    column-gap: 3vw;
   }
   div.container.blog#first-content div.blog-title .blog-intro {
     display: flex;
@@ -674,8 +859,7 @@ div.container.blog.gray-linear p.caption {
   div.container.blog#first-content div.blog-title {
     grid-template-columns: 1fr 1fr;
     grid-row: 75vh;
-    -moz-column-gap: 4vw;
-         column-gap: 4vw;
+    column-gap: 4vw;
   }
   div.container.blog#first-content div.blog-title .blog-intro {
     padding: 5vh 0;
@@ -721,8 +905,7 @@ div.container.blog.gray-linear p.caption {
   div.container.blog#first-content div.blog-title {
     grid-template-columns: 1fr 1fr;
     grid-row: 75vh;
-    -moz-column-gap: 4vw;
-         column-gap: 4vw;
+    column-gap: 4vw;
   }
   div.container.blog#first-content div.blog-title .blog-intro {
     padding: 5vh 0;
@@ -765,8 +948,7 @@ div.container.blog.gray-linear p.caption {
   div.container.blog#first-content div.blog-title {
     grid-template-columns: 1fr 1fr;
     grid-row: 65vh;
-    -moz-column-gap: 5vw;
-         column-gap: 5vw;
+    column-gap: 5vw;
   }
   div.container.blog#first-content div.blog-title .blog-intro {
     padding: 5vh 0;
@@ -809,8 +991,7 @@ div.container.blog.gray-linear p.caption {
   div.container.blog#first-content div.blog-title {
     grid-template-columns: 1fr 1fr;
     grid-row: 65vh;
-    -moz-column-gap: 6vw;
-         column-gap: 6vw;
+    column-gap: 6vw;
   }
   div.container.blog#first-content div.blog-title .blog-intro {
     padding: 5vh 0;
@@ -853,8 +1034,7 @@ div.container.blog.gray-linear p.caption {
   div.container.blog#first-content div.blog-title {
     grid-template-columns: 1fr 1fr;
     grid-row: 75vh;
-    -moz-column-gap: 7vw;
-         column-gap: 7vw;
+    column-gap: 7vw;
   }
   div.container.blog#first-content div.blog-title .blog-intro {
     padding: 5vh 0;
@@ -894,8 +1074,11 @@ div.container.blog.gray-linear p.caption {
   }
 }
 /* ======================== Button ===================== */
-input[type=submit], input[type=reset], input[type=button],
-button, .button {
+input[type=submit],
+input[type=reset],
+input[type=button],
+button,
+.button {
   background-color: #ececec;
   border-radius: 10px;
   padding: 0.75em 1em;
@@ -907,34 +1090,44 @@ button, .button {
   justify-content: center;
   font-size: 0.7em;
   font-weight: 700;
-  font-family: "Poppins", sans-serif;
+  font-family: "Funnel Sans", sans-serif;
   letter-spacing: 0.075em;
   text-decoration: none;
   text-transform: uppercase;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
-input[type=submit]:hover, input[type=reset]:hover, input[type=button]:hover,
-button:hover, .button:hover {
+input[type=submit]:hover,
+input[type=reset]:hover,
+input[type=button]:hover,
+button:hover,
+.button:hover {
   background-color: #ececec;
   opacity: 0.8;
   color: #353535;
 }
-input[type=submit]:active, input[type=reset]:active, input[type=button]:active,
-button:active, .button:active {
+input[type=submit]:active,
+input[type=reset]:active,
+input[type=button]:active,
+button:active,
+.button:active {
   opacity: 0.5;
   background-color: #ececec;
   color: #353535;
 }
-input[type=submit].icon i, input[type=reset].icon i, input[type=button].icon i,
-button.icon i, .button.icon i {
+input[type=submit].icon i,
+input[type=reset].icon i,
+input[type=button].icon i,
+button.icon i,
+.button.icon i {
   font-size: 1.2em;
   padding-left: 0.5em;
   padding-bottom: 1px;
 }
-input[type=submit].project, input[type=reset].project, input[type=button].project,
-button.project, .button.project {
+input[type=submit].project,
+input[type=reset].project,
+input[type=button].project,
+button.project,
+.button.project {
   text-transform: none;
   letter-spacing: 0;
   font-weight: 600;
@@ -943,18 +1136,27 @@ button.project, .button.project {
   font-size: 1em;
   color: #353535;
 }
-input[type=submit].project.white, input[type=reset].project.white, input[type=button].project.white,
-button.project.white, .button.project.white {
+input[type=submit].project.white,
+input[type=reset].project.white,
+input[type=button].project.white,
+button.project.white,
+.button.project.white {
   color: #f4f3ef;
 }
 
 @media screen and (max-width: 992px) {
-  input[type=submit], input[type=reset], input[type=button],
-  button, .button {
+  input[type=submit],
+  input[type=reset],
+  input[type=button],
+  button,
+  .button {
     font-size: 0.6em;
   }
-  input[type=submit].icon i, input[type=reset].icon i, input[type=button].icon i,
-  button.icon i, .button.icon i {
+  input[type=submit].icon i,
+  input[type=reset].icon i,
+  input[type=button].icon i,
+  button.icon i,
+  .button.icon i {
     font-size: 1.2em;
   }
 }
@@ -966,15 +1168,11 @@ button.project.white, .button.project.white {
 }
 .slide-menu .dots {
   margin-bottom: -10px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .slide-menu .dots .dot {
   position: relative;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  appearance: none;
   display: inline-block;
   background-color: #c6c6c6;
   cursor: pointer;
@@ -1004,12 +1202,15 @@ button.project.white, .button.project.white {
 /* ======================== Table ===================== */
 .table-wrapper {
   overflow: scroll;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
   padding-bottom: 1vh;
 }
 
-.table-wrapper::-webkit-scrollbar { /* WebKit */
+.table-wrapper::-webkit-scrollbar {
+  /* WebKit */
   width: 0;
   height: 0;
 }
@@ -1017,15 +1218,17 @@ button.project.white, .button.project.white {
 table {
   margin: 0.5vh 0;
   width: 100%;
-  font-family: "Poppins", sans-serif;
+  font-family: "Funnel Sans", sans-serif;
 }
 table a {
   font-size: inherit;
 }
-table th, table td {
+table th,
+table td {
   font-size: 85%;
 }
-table th b, table td b {
+table th b,
+table td b {
   font-weight: 900;
 }
 table thead {
@@ -1169,7 +1372,8 @@ select:after {
   padding: 0 !important;
 }
 
-.before, .after {
+.before,
+.after {
   margin: 0;
 }
 
@@ -1184,7 +1388,7 @@ select:after {
 .before figcaption,
 .after figcaption {
   font-size: 90%;
-  font-family: "Poppins";
+  font-family: "Funnel Sans";
   background: transparent;
   color: #353535;
   padding: 8px;
@@ -1465,20 +1669,20 @@ h1, h2, h3, h4, h5, h6, p, a, code, pre, ol, ul, li {
   }
 }
 footer p {
-  font-family: "Charter";
+  font-family: "Funnel Sans";
 }
 
 /* ======================== Blog ===================== */
 div.container.blog#first-content div.blog-title .blog-intro p.author {
   padding: 4px 0 10px;
-  font-family: "Poppins";
+  font-family: "Funnel Sans";
   font-style: italic;
   font-weight: 400;
   line-height: 1.2;
   font-size: 85%;
 }
 div.container.blog#first-content div.blog-title .blog-intro p.abstract {
-  font-family: "Poppins";
+  font-family: "Funnel Sans";
   font-weight: 400;
   padding: 1vh 0;
   font-size: 85%;
@@ -1493,7 +1697,7 @@ div.container.blog#first-content div.blog-title .blog-intro .info p {
 
 div.container.blog p.text {
   padding: 1.5vh 0;
-  font-family: "Charter", sans-serif;
+  font-family: "Funnel Sans", sans-serif;
 }
 div.container.blog p.text:last-child {
   padding-bottom: 0;
@@ -1536,4 +1740,6 @@ select {
 .before figcaption,
 .after figcaption {
   font-size: 70%;
-}/*# sourceMappingURL=main_free.css.map */
+}
+
+/*# sourceMappingURL=main_free.css.map */
