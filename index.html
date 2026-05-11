@@ -13,12 +13,15 @@
     <meta content="https://carruc.github.io" property="og:url">
     <meta content="Pietro Carrucciu" property="og:title">
     <meta content="Personal Website" property="og:description">
+    <meta content="assets/figures/clarity_light_no_cover.png" property="og:image">
 
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" type="text/css" media="all" href="assets/stylesheets/main_free.css" />
     <link rel="stylesheet" type="text/css" media="all" href="clarity/clarity.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/foundation.min.css">
     <link href="assets/fontawesome-free-6.6.0-web/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />
+    <link rel="stylesheet" href="assets/stylesheets/articles.css">
     <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
     <script src="assets/scripts/navbar.js"></script> <!-- Comment to remove table of content. -->
     <script type="text/x-mathjax-config">
@@ -73,52 +76,6 @@
         </p>
     </div>
 
-    <style>
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        .article-card {
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .article-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .article-card-image {
-            width: 100%;
-            aspect-ratio: 16/9;
-            object-fit: cover;
-            background-color: #f0f0f0;
-        }
-        .article-card-title {
-            padding: 1rem;
-            margin: 0;
-            font-size: 1rem;
-            font-weight: 600;
-            line-height: 1.4;
-        }
-        @media (max-width: 900px) {
-            .articles-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 600px) {
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-
     <div class="container blog main first" id="blog-main">
         <h1><a href="articles" style="text-decoration: none; color: inherit; font-size: 100%;">Recent Articles <i class="fa-solid fa-chevron-right" style="font-size: 0.5em; vertical-align: middle;"></i></a></h1>
 
@@ -126,26 +83,6 @@
             <a href="articles/sample-stock-article.html" class="article-card">
                 <img src="assets/figures/clarity.png" alt="Article Image" class="article-card-image">
                 <h3 class="article-card-title">Sample Stock Article</h3>
-            </a>
-            <a href="articles/sample-stock-article.html" class="article-card">
-                <img src="assets/figures/clarity.png" alt="Article Image" class="article-card-image">
-                <h3 class="article-card-title">Another Sample Article</h3>
-            </a>
-            <a href="articles/sample-stock-article.html" class="article-card">
-                <img src="assets/figures/clarity.png" alt="Article Image" class="article-card-image">
-                <h3 class="article-card-title">Third Article Example</h3>
-            </a>
-            <a href="articles/sample-stock-article.html" class="article-card">
-                <img src="assets/figures/clarity.png" alt="Article Image" class="article-card-image">
-                <h3 class="article-card-title">Fourth Article Title</h3>
-            </a>
-            <a href="articles/sample-stock-article.html" class="article-card">
-                <img src="assets/figures/clarity.png" alt="Article Image" class="article-card-image">
-                <h3 class="article-card-title">Fifth Article Here</h3>
-            </a>
-            <a href="articles/sample-stock-article.html" class="article-card">
-                <img src="assets/figures/clarity.png" alt="Article Image" class="article-card-image">
-                <h3 class="article-card-title">Sixth Article Final</h3>
             </a>
         </div>
     </div>
@@ -167,5 +104,5 @@
     <script src="clarity/clarity.js"></script>
     <script src="assets/scripts/main.js"></script>
 
-</html>
 </body>
+</html>
