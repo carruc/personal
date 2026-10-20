@@ -1,3 +1,5 @@
+> Architecture update: this repository now uses Eleventy and Markdown under `src/`. See `README.md` for current authoring, build, and deployment instructions. The original guide below is retained only as Clarity layout reference; do not recreate root HTML pages or copy script imports wholesale.
+
 # AI Agent Guide: Creating a Personal Website with the Clarity Template
 
 This guide provides instructions for AI agents on how to modify the "Clarity" template (a GitHub Pages preset originally designed for AI research) into a personal website featuring a custom header, a homepage with recent articles, and individual article pages.

@@ -1,0 +1,53 @@
+/* Personal-site layer over Clarity's free typography and base styles. */
+body { background: #fafafa; margin: 0; }
+.shell { width: min(100% - 3rem, 960px); margin-inline: auto; box-sizing: border-box; }
+.site-header { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; flex-wrap: wrap; padding-block: 2rem; border-bottom: 1px solid #e0e0e0; }
+.site-name { font-weight: 600; text-decoration: none; }
+.site-header nav { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; }
+.site-header nav a { font-size: 1rem; text-decoration: none; }
+.site-header nav a[aria-current] { text-decoration: underline; text-underline-offset: .4em; }
+main.shell { flex: 1; padding-block: 3rem 5rem; }
+.page-heading { margin-bottom: 2rem; }
+h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.2; margin: 0 0 1.5rem; }
+h2 { font-size: 1.65rem; line-height: 1.3; margin: 2rem 0 1rem; }
+h3 { font-size: 1.25rem; font-weight: 500; }
+p { margin: 0 0 1.25rem; }
+.lead { font-size: 1.25rem; }
+.muted { color: #666; }
+.inline-links { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; margin: 1.5rem 0; }
+.entries { max-width: 780px; }
+.entry { padding: 1.75rem 0; border-bottom: 1px solid #e0e0e0; }
+.entry:first-child { padding-top: 0; }
+.entry h2 { margin-top: 0; }
+.entry-image { width: 100%; max-height: 320px; object-fit: cover; margin-bottom: 1.5rem; }
+.cover, .prose img { max-width: 100%; height: auto; }
+.prose { max-width: 75ch; overflow-wrap: anywhere; }
+.prose ul, .prose ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+.prose li { list-style: inherit; }
+.prose blockquote { border-left: 3px solid #ccc; padding-left: 1rem; margin-inline: 0; }
+.prose table { display: block; overflow-x: auto; border-collapse: collapse; margin-bottom: 1.5rem; }
+.prose th, .prose td { padding: .5rem; border: 1px solid #ddd; }
+pre, pre[class*="language-"] { overflow: auto; padding: 1.25rem; background: #eee; border-radius: .3rem; margin-block: 1.5rem; }
+code, pre { font-family: 'Fira Code', monospace; font-size: .9em; }
+.token.comment { color: #626262; } .token.keyword, .token.boolean { color: #7141a0; } .token.string { color: #216b37; } .token.number, .token.function { color: #165b94; }
+#article-toc { border-left: 2px solid #ddd; padding-left: 1.25rem; margin-block: 2rem; }
+#article-toc ul { list-style: none; padding: 0; }
+#article-toc a { font-size: 1rem; }
+.site-footer { padding-block: 1.5rem; border-top: 1px solid #e0e0e0; }
+.site-footer p { font-size: .85rem; }
+a:focus-visible { outline: 2px solid #304463; outline-offset: 5px; }
+.skip-link { position: absolute; left: 1rem; top: -5rem; background: white; padding: .75rem; z-index: 10; }
+.skip-link:focus { top: 1rem; }
+.draft-notice { background: #fff0cc; padding: .75rem; }
+@media (max-width: 600px) { .shell { width: calc(100% - 2rem); } .site-header { padding-block: 1.5rem; } main.shell { padding-block: 2rem 3rem; } }
+
+.site-header a { font-family: "Funnel Sans", sans-serif; }
+.site-footer p { font-style: normal; }
+h1, h2, h3 { overflow-wrap: anywhere; }
+
+.site-header .site-name { font-family: "Funnel Display", sans-serif; font-weight: 700; font-size: 1.125rem; }
+
+.site-identity { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.social-icons { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; margin: 0; }
+.social-icons a { display: inline-flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; text-decoration: none; font-size: 1rem; background: #ececec; border-radius: 50%; }
+.social-icons a:hover { background: #dedede; }

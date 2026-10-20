@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}{% if title != site.name %} — {{ site.name }}{% endif %}</title>
+  <meta name="description" content="{{ summary or site.description }}">
+  <link rel="canonical" href="{{ page.url | absolute(site.url) }}">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:type" content="{% if section == 'articles' and page.url != '/articles/' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ summary or site.description }}">
+  <meta property="og:url" content="{{ page.url | absolute(site.url) }}">
+  <meta name="twitter:card" content="{% if image or site.image %}summary_large_image{% else %}summary{% endif %}">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ summary or site.description }}">
+  {% if image or site.image %}<meta property="og:image" content="{{ (image or site.image) | absolute(site.url) }}"><meta name="twitter:image" content="{{ (image or site.image) | absolute(site.url) }}">{% endif %}
+  {% if draft or noindex %}<meta name="robots" content="noindex">{% endif %}
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/assets/stylesheets/main_free.css">
+  <link rel="stylesheet" href="/assets/fontawesome-free-6.6.0-web/css/all.min.css">
+  <link rel="stylesheet" href="/assets/stylesheets/site.css">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }} — Articles" href="/feed.xml">
+  {% if math %}<script>window.MathJax = {tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>{% endif %}
+  {% if toc %}<script defer src="/assets/scripts/toc.js"></script>{% endif %}
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header shell">
+    <div class="site-identity">
+      <a class="site-name" href="/">{{ site.name }}</a>
+      <ul class="social-icons" aria-label="Profile links">
+        {% for social in site.socials %}{% if social.url %}
+        <li><a href="{{ social.url }}" aria-label="{{ social.label }}" title="{{ social.label }}"><i class="{{ social.icon or 'fa-solid fa-link' }}" aria-hidden="true"></i></a></li>
+        {% endif %}{% endfor %}
+      </ul>
+    </div>
+    <nav aria-label="Main navigation">
+      <a href="/"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
+      <a href="/research/"{% if section == 'research' %} aria-current="page"{% endif %}>Research &amp; Projects</a>
+      <a href="/articles/"{% if section == 'articles' %} aria-current="page"{% endif %}>Articles</a>
+    </nav>
+  </header>
+  <main id="main" class="shell" tabindex="-1">
+    {% if draft %}<p class="draft-notice">Draft · local preview</p>{% endif %}
+    {{ content | safe }}
+  </main>
+  <footer class="shell site-footer">
+    <p>© {{ site.name }}. Built on <a href="https://shikun.io/projects/clarity">Clarity</a> by <a href="https://shikun.io/">Shikun Liu</a>. <a href="/feed.xml">RSS</a></p>
+  </footer>
+</body>
+</html>

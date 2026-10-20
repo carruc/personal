@@ -1,0 +1,15 @@
+---
+layout: base.njk
+---
+<article>
+  <header class="page-heading">
+    <a href="/{{ section }}/">← Back to {% if section == 'articles' %}articles{% else %}research &amp; projects{% endif %}</a>
+    <h1>{{ title }}</h1>
+    {% if section == 'articles' %}<p class="muted"><time datetime="{{ date | isoDate }}">{{ date | displayDate }}</time></p>{% endif %}
+    <p class="lead">{{ summary }}</p>
+    {% include 'project-links.njk' %}
+  </header>
+  {% if image %}<img class="cover" src="{{ image }}" alt="{{ imageAlt or '' }}">{% endif %}
+  {% if toc %}<nav id="article-toc" aria-label="On this page" hidden></nav>{% endif %}
+  <div class="prose">{{ content | safe }}</div>
+</article>

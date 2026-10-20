@@ -1,80 +1,58 @@
-# Clarity Template
+# Pietro Carrucciu’s website
 
-Clarity is an open-source, minimalist website template designed specifically for presenting AI research. It features a modular and clean design that is easy to customise for creating simple, project-based websites. With Clarity, you can effectively showcase your work, ensuring your research stands out in a visually appealing and professional manner. 
+A Markdown-powered Eleventy site using the light [Clarity template](https://shikun.io/projects/clarity). The public site has an intro, a research/projects listing, and an article archive. No backend or CMS is required.
 
-## Design Showcase
+## Local development
 
-- Clarity Light Theme with Project Cover:
-```css
-<div class="container blog" id="first-content" style="background-color: #E0E4E6;">
-    <div class="blog-title">
+Use Node.js 24 (Node 22 or newer is supported).
+
+```sh
+npm ci
+npm run dev
 ```
-<img class="foreground" src="assets/figures/clarity_light.png">
 
-- Clarity Dark Theme with Project Cover:
-```css
-<div class="container blog" id="first-content" style="background-color: #304463;">
-    <div class="blog-title white">
+Open the local URL printed by Eleventy. Development includes drafts and rebuilds when files change.
+
+```sh
+npm run build  # production output in _site/
+npm run check  # build, internal links/assets, metadata, XML, output isolation
+npm test       # isolated content fixtures; does not change your content
 ```
-<img class="foreground" src="assets/figures/clarity_dark.png">
 
-- Clarity Light Theme without Project Cover:
-```css
-<div class="container blog" id="first-content" style="background-color: #304463;">
-    <div class="blog-title no-cover">
-```
-<img class="foreground" src="assets/figures/clarity_light_no_cover.png">
+`_site/` and `node_modules/` are generated and ignored by Git. The production build cleans output automatically, including any previously previewed draft pages.
 
-- Clarity Dark Theme without Project Cover:
-```css
-<div class="container blog" id="first-content" style="background-color: #E0E4E6;">
-    <div class="blog-title white no-cover">
-```
-<img class="foreground" src="assets/figures/clarity_dark_no_cover.png">
+## Profile and navigation
 
-- Clarity Gradient Theme without Project Cover:
-```css
-<div class="container blog" id="first-content" style="background: linear-gradient(90deg, hsla(298, 68%, 90%, 1) 0%, hsla(30, 82%, 91%, 1) 100%);">
-    <div class="blog-title no-cover">
-```
-<img class="foreground" src="assets/figures/clarity_gradient_no_cover.png">
+Edit `src/index.md` for your introduction. Edit `src/_data/site.json` for your name, description, canonical domain, optional social preview image, and social links. Social links appear as Font Awesome icons beside the name in the top bar. Set each entry’s `icon` to its Font Awesome Free classes; omitted icons use a generic link. Accessible labels and tooltips use `label`. Empty social URLs are hidden. Add additional links to the `socials` array; use `mailto:you@example.com` for email. Existing GitHub, LinkedIn, and résumé links are retained.
 
-*Note: The design showcase uses the licensed font option along with the complete FontAwesome Pro icon set.*
+Shared navigation and metadata live in `src/_includes/base.njk`; shared detail pages in `detail.njk`. Clarity’s free styling is kept in `assets/stylesheets/main_free.css`, with personal-site adjustments in `assets/stylesheets/site.css`. Existing assets retain their `/assets/` URLs. The unused original Clarity demonstrations remain in the repository for reference.
 
+## Articles
 
-## Update
-- **Jan. 12, 2025**: Feature update with `navbar` design for hoverable table of content (thanks [@yongyizang](https://github.com/yongyizang) for his generous contribution). Please comment out or in `<script src="assets/scripts/navbar.js"></script>` to activate or deactivate this feature.
-<p align="center">
-  <img src="assets/figures/toc_web.gif"/>
-  <img src="assets/figures/toc_phone.gif"/>
-</p>
+Copy `examples/article.md` into `src/articles/your-slug.md`. The filename determines `/articles/your-slug/`.
 
-- **Oct. 28, 2024**: Feature update with `slideshow` design for automated slideshow display. For detailed usage and instructions, please refer to the `clarity.html` file.
+Required front matter: `title`, `summary`, and `date` (ISO `YYYY-MM-DD`). Optional: `draft` (default false), `image` (root-relative asset URL or HTTPS URL), `imageAlt`, `toc`, and `math` (both default false). Quote text containing YAML punctuation. Use a nonempty image description for meaningful images; omitted alt text marks a decorative image.
 
-<p align="center">
-  <img src="assets/figures/slide_show.gif"/>
-</p>
+Write ordinary Markdown after the front matter. Fenced code blocks are highlighted during the build. With `toc: true`, headings produce a keyboard-accessible “On this page” list. With `math: true`, MathJax renders `$...$` and `$$...$$`; it is loaded only on opted-in pages. Articles are listed newest first and automatically added to `/feed.xml`.
 
-- **Oct. 24, 2024**: Feature update with `no-cover` design for title page design layout. For anyone prefer a title page design without a project cover, change `<div class="blog-title">` into `<div class="blog-title no-cover">`.
-- **Aug. 26, 2024**: Feature update with comparison display / [46ec3ee](https://github.com/lorenmt/clarity-template/commit/46ec3eee19ea86775982e3c93c5b35716bad2d09) suggested in  [Issue #1](https://github.com/lorenmt/clarity-template/issues/1#issue-2485070942).
+## Research and projects
 
-<p align="center">
-  <img src="assets/figures/comparison.gif"/>
-</p>
+Copy `examples/project.md` into `src/research/your-slug.md`. Required fields: `title` and `summary`. Optional fields: `draft`, `date` (for ordering), `image`, `imageAlt`, and `links` containing `paper`, `code`, `demo`, or other named links.
 
-## Usage
-Please follow the visual guidelines outlined in the [Clarity blog post](https://shikun.io/projects/clarity) or the `clarity.html` file to optimise visual layouts and design. Additionally, a minimalist example template, `minimal.html`, is provided to help you get started quickly.
+A Markdown body creates `/research/your-slug/`; leaving the body empty creates only a listing entry with its external links. Dated entries sort newest first; use dates when you want explicit ordering. Detail pages also support `toc` and `math`.
 
-Clarity offers two font options: 
-1. [Charter](https://practicaltypography.com/charter.html) + [Poppins](https://fonts.google.com/specimen/Poppins): free fonts available for commercial use. 
-2.  [Tiempos Text](https://klim.co.nz/retail-fonts/tiempos-text/) + [Athletics](https://familytype.co/#athletics): licensed fonts with the trial license available for non-commercial use.
+## Drafts and publishing
 
-By default, the template uses the free fonts. To switch to the licensed fonts, follow these steps: 
-1. Download the trial license or purchase the full license and place the font files in the  `assets/fonts` directory.
-2. Optionally, use a [web font converter](https://transfonter.org/) to ensure compatibility across different browsers.
-3. Update the font-size and default font options in `assets/stylesheets/_master.scss` (just comment in and out). 
-4. Change the corresponding CSS file path to `assets/stylesheets/main.css` in your project HTML file. 
-5. To further improve the visual aesthetics, please consider purchasing the  [FontAwesome Pro](https://fontawesome.com/plans) for a complete icon set, and update `<link href="assets/fontawesome-free-6.6.0-web/css/all.min.css" rel="stylesheet">` with `<link href="assets/fontawesome-pro-6.6.0-web/css/all.min.css" rel="stylesheet">` in the `<head>` tag.
+Examples are outside `src/` and never published. Copy one into the relevant content folder to start writing. `draft: true` entries appear only in local preview, with a draft banner and `noindex`; RSS and sitemap always omit drafts. Change to `draft: false` when ready. Production builds omit draft pages and their listing entries.
 
-## License
-This project follows  <a href="https://creativecommons.org/licenses/by-sa/4.0/"><b>Creative Commons Attribution-ShareAlike 4.0 International License</b></a>. This allows you to freely modify and distribute the template in any way you like. In return, I kindly ask that you link back to the [Clarity blog post](https://shikun.io/projects/clarity) in the footer to acknowledge my work and efforts. Enjoy!
+There is no search, analytics, comments, or tag filtering. Empty listings show a short empty state until you publish content.
+
+## GitHub Pages
+
+The workflow runs `npm ci`, the production checks, and content tests before uploading only `_site/`. It deploys on pushes to `main` or `master`, or manual dispatch. In the repository’s Pages settings, choose **GitHub Actions** as the source.
+
+`CNAME` preserves `carruc.eu`; the site assumes deployment at this domain’s root. DNS and GitHub’s custom-domain/HTTPS settings must point to the Pages site. If changing domains, update both `CNAME` and `site.url`. The build generates canonical metadata, `/feed.xml`, `/sitemap.xml`, and `/404.html`; the 404 uses root-relative links for nested missing URLs.
+
+## Attribution
+
+Clarity was designed by [Shikun Liu](https://shikun.io/). Its attribution remains in the shared footer. See `LICENSE` for the original template’s CC BY-SA 4.0 license and bundled font/icon licenses for asset-specific terms.
