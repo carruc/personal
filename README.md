@@ -23,7 +23,7 @@ npm test       # isolated content fixtures; does not change your content
 
 ## Profile and navigation
 
-Edit `src/index.md` for your introduction. Edit `src/_data/site.json` for your name, description, canonical domain, optional social preview image, and social links. Social links appear as Font Awesome icons beside the name in the top bar. Set each entry’s `icon` to its Font Awesome Free classes; omitted icons use a generic link. Accessible labels and tooltips use `label`. Empty social URLs are hidden. Add additional links to the `socials` array; use `mailto:you@example.com` for email. Existing GitHub, LinkedIn, and résumé links are retained.
+Edit `src/index.md` for your introduction. Edit `src/_data/site.json` for your name, description, canonical domain, optional social preview image, and social links. Social links appear as Font Awesome icons beside the name in the top bar. Set each entry’s `icon` to its Font Awesome Free classes; omitted icons use a generic link. Accessible labels and tooltips use `label`. Set `header: false` to show a link only in the biography beneath the photo; `handle` sets its displayed text there. Empty social URLs are hidden. Add additional links to the `socials` array; use `mailto:you@example.com` for email. Existing GitHub, LinkedIn, and résumé links are retained.
 
 Shared navigation and metadata live in `src/_includes/base.njk`; shared detail pages in `detail.njk`. Clarity’s free styling is kept in `assets/stylesheets/main_free.css`, with personal-site adjustments in `assets/stylesheets/site.css`. Existing assets retain their `/assets/` URLs. The unused original Clarity demonstrations remain in the repository for reference.
 

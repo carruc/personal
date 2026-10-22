@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="/assets/stylesheets/site.css">
   <link rel="alternate" type="application/rss+xml" title="{{ site.name }} — Articles" href="/feed.xml">
   {% if math %}<script>window.MathJax = {tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>{% endif %}
+  {% if profile %}<script defer src="/assets/scripts/profile.js"></script>{% endif %}
   {% if toc %}<script defer src="/assets/scripts/toc.js"></script>{% endif %}
 </head>
 <body>
@@ -30,7 +31,7 @@
     <div class="site-identity">
       <a class="site-name" href="/">{{ site.name }}</a>
       <ul class="social-icons" aria-label="Profile links">
-        {% for social in site.socials %}{% if social.url %}
+        {% for social in site.socials %}{% if social.url and social.header != false %}
         <li><a href="{{ social.url }}" aria-label="{{ social.label }}" title="{{ social.label }}"><i class="{{ social.icon or 'fa-solid fa-link' }}" aria-hidden="true"></i></a></li>
         {% endif %}{% endfor %}
       </ul>

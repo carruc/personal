@@ -5,19 +5,37 @@
   "image": "",
   "socials": [
     {
+      "label": "Twitter",
+      "handle": "p_carruc",
+      "url": "https://twitter.com/p_carruc",
+      "icon": "fa-brands fa-twitter",
+      "header": false
+    },
+    {
+      "label": "Instagram",
+      "handle": "p_carruc",
+      "url": "https://www.instagram.com/p_carruc/",
+      "icon": "fa-brands fa-instagram",
+      "header": false
+    },
+    {
       "label": "GitHub",
       "url": "https://github.com/carruc",
-      "icon": "fa-brands fa-github"
+      "icon": "fa-brands fa-github",
+      "handle": "carruc"
     },
     {
       "label": "LinkedIn",
       "url": "https://linkedin.com/in/pietro-carrucciu",
-      "icon": "fa-brands fa-linkedin"
+      "icon": "fa-brands fa-linkedin",
+      "handle": "Pietro Carrucciu"
     },
     {
       "label": "Résumé",
       "url": "https://drive.google.com/file/d/1Cyeki9amILsMXgBwQ_GLpQLQi-4kPVTC/view?usp=sharing",
-      "icon": "fa-solid fa-file-pdf"
+      "icon": "fa-solid fa-file-pdf",
+      "header": false,
+      "handle": "Résumé"
     },
     {
       "label": "ORCID",
@@ -28,6 +46,13 @@
       "label": "Email",
       "url": "",
       "icon": "fa-solid fa-envelope"
+    },
+    {
+      "label": "Book a call",
+      "handle": "Book a call",
+      "url": "https://cal.com/carruc/meet",
+      "icon": "fa-regular fa-calendar",
+      "header": false
     }
   ]
 }
