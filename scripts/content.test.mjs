@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, cp, symlink, writeFile, readFile, rm, access } from 'node:fs/promises';
+import { mkdtemp, mkdir, cp, symlink, writeFile, readFile, rm, access, readdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -14,10 +14,18 @@ test('production and preview content flows', async () => {
   const build = (preview = false) => execFileSync(process.execPath, [cli], { cwd: dir, env: { ...process.env, SITE_PREVIEW: preview ? '1' : '0' }, stdio: 'pipe' });
   try {
     await cp(path.join(repo, 'src'), path.join(dir, 'src'), { recursive: true });
+    await cp(path.join(repo, 'lib'), path.join(dir, 'lib'), { recursive: true });
     await cp(path.join(repo, 'scripts'), path.join(dir, 'scripts'), { recursive: true });
     await cp(path.join(repo, 'eleventy.config.js'), path.join(dir, 'eleventy.config.js'));
     await writeFile(path.join(dir, 'package.json'), '{"type":"module"}');
     for (const name of ['node_modules', 'assets', 'CNAME']) await symlink(path.join(repo, name), path.join(dir, name));
+    await rm(path.join(dir, 'src/legacy'), { recursive: true, force: true });
+    for (const file of await readdir(path.join(dir, 'src/articles'))) {
+      if (file.endsWith('.md')) await rm(path.join(dir, 'src/articles', file));
+    }
+    for (const file of await readdir(path.join(dir, 'src/research'))) {
+      if (file.endsWith('.md')) await rm(path.join(dir, 'src/research', file));
+    }
     build();
     assert.match(await read('articles/index.html'), /No articles published yet/);
     assert.match(await read('research/index.html'), /No research or projects published yet/);
@@ -48,7 +56,11 @@ test('production and preview content flows', async () => {
     assert.match(await read('articles/private/index.html'), /Draft · local preview/);
     assert.match(await read('research/private/index.html'), /Private research/);
     for (const xml of ['feed.xml', 'sitemap.xml']) assert.doesNotMatch(await read(xml), /private/);
+    const staleDirectory = path.join(dir, '_site/assets/stale/nested');
+    await mkdir(staleDirectory, { recursive: true });
+    await writeFile(path.join(staleDirectory, 'removed.txt'), 'Stale output');
     execFileSync(process.execPath, ['scripts/build.mjs'], { cwd: dir, stdio: 'pipe' });
+    await assert.rejects(access(path.join(dir, '_site/assets/stale')));
     await assert.rejects(access(path.join(dir, '_site/articles/private/index.html')));
     await assert.rejects(access(path.join(dir, '_site/research/private/index.html')));
     await writeFile(path.join(dir, 'src/articles/no-date.md'), '---\ntitle: Missing date\nsummary: Needs a date\n---\nText');

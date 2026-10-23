@@ -1,15 +1,25 @@
 ---
 layout: base.njk
+profile: true
+toc: true
 ---
-<article>
-  <header class="page-heading">
-    <a href="/{{ section }}/">← Back to {% if section == 'articles' %}articles{% else %}research &amp; projects{% endif %}</a>
-    <h1>{{ title }}</h1>
-    {% if section == 'articles' %}<p class="muted"><time datetime="{{ date | isoDate }}">{{ date | displayDate }}</time></p>{% endif %}
-    <p class="lead">{{ summary }}</p>
-    {% include 'project-links.njk' %}
-  </header>
-  {% if image %}<img class="cover" src="{{ image }}" alt="{{ imageAlt or '' }}">{% endif %}
-  {% if toc %}<nav id="article-toc" aria-label="On this page" hidden></nav>{% endif %}
-  <div class="prose">{{ content | safe }}</div>
-</article>
+{% from "components/language.njk" import languageBadge %}
+<div class="profile-intro detail-layout">
+  <aside class="profile-sidebar detail-sidebar" aria-label="Page navigation">
+    {% if image %}
+    <img class="profile-photo detail-image" src="{{ image }}" alt="{{ imageAlt or '' }}">
+    {% else %}
+    <img class="profile-photo detail-image" src="/assets/figures/pietro-carrucciu.png" alt="Pietro Carrucciu" width="2317" height="2317">
+    {% endif %}
+    {% if toc %}<nav id="article-toc" aria-label="On this page" hidden></nav>{% endif %}
+  </aside>
+  <article>
+    <header class="page-heading">
+      <div class="title-line"><h1>{{ title }} {{ languageBadge(lang or 'en-GB') }}</h1></div>
+      {% if section == 'articles' %}<p class="muted"><time datetime="{{ date | isoDate }}">{{ date | displayDate }}</time></p>{% endif %}
+      <p class="lead">{{ summary }}</p>
+      {% include 'project-links.njk' %}
+    </header>
+    <div class="prose">{{ content | safe }}</div>
+  </article>
+</div>

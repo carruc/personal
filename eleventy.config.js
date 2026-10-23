@@ -1,14 +1,15 @@
 import rss from '@11ty/eleventy-plugin-rss';
 import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
 import anchor from 'markdown-it-anchor';
+import tableCaptions from './lib/table-captions.js';
 import { readFileSync } from 'node:fs';
 
 export default function (config) {
-  const preview = process.env.ELEVENTY_RUN_MODE === 'serve' || process.env.SITE_PREVIEW === '1';
+  const preview = process.env.SITE_PREVIEW === '1';
   config.setNunjucksEnvironmentOptions({ autoescape: true });
   config.addPlugin(rss);
   config.addPlugin(syntaxHighlight);
-  config.amendLibrary('md', md => md.use(anchor));
+  config.amendLibrary('md', md => md.use(anchor).use(tableCaptions));
   config.addPassthroughCopy('assets');
   config.addPassthroughCopy('CNAME');
   config.addFilter('isoDate', value => new Date(value).toISOString());

@@ -4,14 +4,10 @@ title: Research & Projects
 section: research
 permalink: /research/
 ---
+{% from "components/entry.njk" import listEntry %}
 <div class="page-heading"><h1>Research &amp; Projects</h1></div>
 <div class="entries">
 {% for entry in collections.research %}
-<article class="entry">
-  {% if entry.data.image %}<img class="entry-image" src="{{ entry.data.image }}" alt="{{ entry.data.imageAlt or '' }}" loading="lazy">{% endif %}
-  <h2>{% if entry.url %}<a href="{{ entry.url }}">{{ entry.data.title }}</a>{% else %}{{ entry.data.title }}{% endif %}{% if entry.data.draft %} <span class="muted">(Draft)</span>{% endif %}</h2>
-  <p>{{ entry.data.summary }}</p>
-  {% set links = entry.data.links %}{% include 'project-links.njk' %}
-</article>
+{{ listEntry(entry, true) }}
 {% else %}<p class="muted">No research or projects published yet.</p>{% endfor %}
 </div>

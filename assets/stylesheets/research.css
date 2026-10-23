@@ -1,0 +1,26 @@
+.research-figure, .research-comparison { margin: 1.5rem 0; padding: 1rem; border-radius: .75rem; }
+.research-figure img, .comparison-images img { display: block; width: 100%; height: auto; }
+.tone-gray { background: #eceef0; }
+.tone-gradient { background: linear-gradient(90deg, #eceef0, #fff 25%, #fff 75%, #eceef0); }
+.tone-plain { padding: 0; }
+.research-figure figcaption, .research-comparison figcaption { font-size: .85rem; line-height: 1.5; margin-top: .75rem; color: #606060; }
+.figure-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.figure-grid .research-figure { margin: 0; }
+.research-selector, .research-gallery { margin-block: 1.5rem; }
+.research-selector label, .research-comparison label { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; font: inherit; }
+.research-selector select { font: inherit; max-width: 100%; padding: .4rem; background: #fff; border: 1px solid #bbb; border-radius: .3rem; }
+.research-comparison { background: #eceef0; }
+.comparison-images { position: relative; }
+.comparison-images .comparison-before { position: absolute; inset: 0; height: 100%; object-fit: contain; clip-path: inset(0 calc(100% - var(--comparison-position, 50%)) 0 0); }
+.comparison-labels { display: flex; justify-content: space-between; gap: 1rem; font-size: .85rem; margin-block: .75rem; }
+.research-comparison input { flex: 1; min-width: 80px; accent-color: #304463; }
+.gallery-controls { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.gallery-controls button { font: inherit; font-size: .9rem; padding: .5rem .75rem; border: 1px solid #ccc; border-radius: .4rem; cursor: pointer; background: #eceef0; }
+.gallery-controls button:focus-visible, .research-selector select:focus-visible, .research-comparison input:focus-visible { outline: 2px solid #304463; outline-offset: 3px; }
+.prose table tbody tr:nth-child(odd) { background: #eceef0; }
+[data-panel][hidden], [data-slide][hidden] { display: none; }
+@media (max-width: 700px) { .figure-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .research-gallery *, .research-comparison * { transition: none; } }
+.research-figure, .research-comparison, .research-selector, .research-gallery { font-family: 'Funnel Sans', sans-serif; }
+
+.research-figure.figure-size-small { max-width: 280px; margin-inline: auto; box-sizing: border-box; }

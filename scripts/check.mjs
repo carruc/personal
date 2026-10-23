@@ -31,8 +31,16 @@ for (const file of pages) {
   assert.ok($('title').text().trim(), `Missing title: ${file}`);
   assert.ok($('meta[name="description"]').attr('content'), `Missing description: ${file}`);
   const canonical = $('link[rel="canonical"]').attr('href');
-  assert.ok(canonical && !canonicals.has(canonical), `Missing or duplicate canonical: ${file}`);
-  canonicals.add(canonical);
+  const refresh = $('meta[http-equiv="refresh"]').attr('content');
+  if (refresh) {
+    const target = refresh.match(/^0; url=(\/[^;]+)$/)?.[1];
+    assert.ok(target, `Invalid redirect: ${file}`);
+    await checkUrl(target, file);
+    assert.equal(canonical, new URL(target, canonical).href, `Redirect canonical mismatch: ${file}`);
+  } else {
+    assert.ok(canonical && !canonicals.has(canonical), `Missing or duplicate canonical: ${file}`);
+    canonicals.add(canonical);
+  }
   for (const el of $('[href], [src]').toArray()) {
     await checkUrl($(el).attr('href') || $(el).attr('src'), file);
   }

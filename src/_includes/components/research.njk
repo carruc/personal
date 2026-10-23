@@ -1,0 +1,29 @@
+{% macro figure(src, alt, caption, tone='gray', size='default') %}
+<figure class="research-figure tone-{{ tone }} figure-size-{{ size }}"><img src="{{ src }}" alt="{{ alt }}" loading="lazy"><figcaption>{{ caption }}</figcaption></figure>
+{% endmacro %}
+
+{% macro selector(label, options) %}
+<section class="research-selector" data-selector aria-label="{{ label }}">
+<label>{{ label }} <select data-select>{% for option in options %}<option value="{{ loop.index0 }}">{{ option.title }}</option>{% endfor %}</select></label>
+{% for option in options %}<div data-panel{% if not loop.first %} hidden{% endif %}>{{ figure(option.src, option.alt, option.caption) }}</div>{% endfor %}
+</section>
+{% endmacro %}
+
+{% macro comparison(before, after, label) %}
+<figure class="research-comparison" data-comparison>
+<div class="comparison-images">
+<img src="{{ after.src }}" alt="{{ after.alt }}" loading="lazy">
+<img class="comparison-before" src="{{ before.src }}" alt="{{ before.alt }}" loading="lazy">
+</div>
+<div class="comparison-labels"><span>{{ before.title }}</span><span>{{ after.title }}</span></div>
+<label>{{ label }} <input data-compare type="range" min="0" max="100" value="50" aria-valuetext="50% before image visible"></label>
+<figcaption>Move the slider to compare the two images. Both images use the same scale.</figcaption>
+</figure>
+{% endmacro %}
+
+{% macro gallery(label, items) %}
+<section class="research-gallery" data-gallery aria-label="{{ label }}">
+{% for item in items %}<div data-slide{% if not loop.first %} hidden{% endif %}>{{ figure(item.src, item.alt, item.caption) }}</div>{% endfor %}
+<div class="gallery-controls"><button type="button" data-prev aria-label="Previous slide">← Previous</button><span data-status aria-live="polite">1 / {{ items | length }}</span><button type="button" data-next aria-label="Next slide">Next →</button></div>
+</section>
+{% endmacro %}

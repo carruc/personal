@@ -1,0 +1,14 @@
+{% from "components/language.njk" import languageBadge %}
+{% macro listEntry(entry, showLinks=false) %}
+<article class="entry{% if entry.data.image %} entry-with-image{% endif %}">
+  <div class="entry-content">
+    <div class="entry-heading">
+      <h2>{% if entry.url %}<a href="{{ entry.url }}">{{ entry.data.title }}</a>{% else %}{{ entry.data.title }}{% endif %} {{ languageBadge(entry.data.lang or 'en-GB') }}</h2>
+      <time class="muted" datetime="{{ entry.date | isoDate }}">{{ entry.date | displayDate }}</time>
+    </div>
+    <p>{{ entry.data.summary }}</p>
+    {% if showLinks %}{% set links = entry.data.links %}{% include 'project-links.njk' %}{% endif %}
+  </div>
+  {% if entry.data.image %}<div class="entry-thumbnail"><img class="entry-image" src="{{ entry.data.image }}" alt="{{ entry.data.imageAlt or '' }}" loading="lazy" decoding="async"></div>{% endif %}
+</article>
+{% endmacro %}

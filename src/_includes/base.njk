@@ -1,16 +1,17 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="{{ lang or 'en-GB' }}">
 <head>
   <meta charset="utf-8">
+  {% if redirectTo %}<meta http-equiv="refresh" content="0; url={{ redirectTo }}">{% endif %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }}{% if title != site.name %} — {{ site.name }}{% endif %}</title>
   <meta name="description" content="{{ summary or site.description }}">
-  <link rel="canonical" href="{{ page.url | absolute(site.url) }}">
-  <meta property="og:locale" content="en_GB">
+  <link rel="canonical" href="{{ (redirectTo or page.url) | absolute(site.url) }}">
+  <meta property="og:locale" content="{% if lang == 'it' %}it_IT{% else %}en_GB{% endif %}">
   <meta property="og:type" content="{% if section == 'articles' and page.url != '/articles/' %}article{% else %}website{% endif %}">
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ summary or site.description }}">
-  <meta property="og:url" content="{{ page.url | absolute(site.url) }}">
+  <meta property="og:url" content="{{ (redirectTo or page.url) | absolute(site.url) }}">
   <meta name="twitter:card" content="{% if image or site.image %}summary_large_image{% else %}summary{% endif %}">
   <meta name="twitter:title" content="{{ title }}">
   <meta name="twitter:description" content="{{ summary or site.description }}">
@@ -21,6 +22,7 @@
   <link rel="stylesheet" href="/assets/fontawesome-free-6.6.0-web/css/all.min.css">
   <link rel="stylesheet" href="/assets/stylesheets/site.css">
   <link rel="alternate" type="application/rss+xml" title="{{ site.name }} — Articles" href="/feed.xml">
+  {% if researchModules %}<link rel="stylesheet" href="/assets/stylesheets/research.css"><script defer src="/assets/scripts/main.js"></script>{% endif %}
   {% if math %}<script>window.MathJax = {tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>{% endif %}
   {% if profile %}<script defer src="/assets/scripts/profile.js"></script>{% endif %}
   {% if toc %}<script defer src="/assets/scripts/toc.js"></script>{% endif %}
@@ -30,11 +32,13 @@
   <header class="site-header shell">
     <div class="site-identity">
       <a class="site-name" href="/">{{ site.name }}</a>
+      {# Header social icons temporarily disabled.
       <ul class="social-icons" aria-label="Profile links">
         {% for social in site.socials %}{% if social.url and social.header != false %}
         <li><a href="{{ social.url }}" aria-label="{{ social.label }}" title="{{ social.label }}"><i class="{{ social.icon or 'fa-solid fa-link' }}" aria-hidden="true"></i></a></li>
         {% endif %}{% endfor %}
       </ul>
+      #}
     </div>
     <nav aria-label="Main navigation">
       <a href="/"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>

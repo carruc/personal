@@ -1,0 +1,3 @@
+{% macro languageBadge(lang='en-GB') %}
+{% if lang == 'it' or lang == 'it-IT' %}<span class="language-badge" role="img" aria-label="Italian" title="Italian">🇮🇹</span>{% elif lang == 'en' or lang == 'en-GB' or lang == 'en-US' %}<span class="language-badge" role="img" aria-label="English" title="English">🇬🇧</span>{% endif %}
+{% endmacro %}

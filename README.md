@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Open the local URL printed by Eleventy. Development includes drafts and rebuilds when files change.
+Open the local URL printed by Eleventy. Development excludes drafts and rebuilds when files change.
 
 ```sh
 npm run build  # production output in _site/
@@ -43,7 +43,7 @@ A Markdown body creates `/research/your-slug/`; leaving the body empty creates o
 
 ## Drafts and publishing
 
-Examples are outside `src/` and never published. Copy one into the relevant content folder to start writing. `draft: true` entries appear only in local preview, with a draft banner and `noindex`; RSS and sitemap always omit drafts. Change to `draft: false` when ready. Production builds omit draft pages and their listing entries.
+Examples are outside `src/` and never published. Copy one into the relevant content folder to start writing. `draft: true` entries are excluded from normal development and production. An explicit `SITE_PREVIEW=1 npx eleventy` build includes them for review with a draft banner and `noindex`; RSS and sitemap always omit drafts. Change to `draft: false` when ready. Production builds omit draft pages and their listing entries.
 
 There is no search, analytics, comments, or tag filtering. Empty listings show a short empty state until you publish content.
 
@@ -56,3 +56,28 @@ The workflow runs `npm ci`, the production checks, and content tests before uplo
 ## Attribution
 
 Clarity was designed by [Shikun Liu](https://shikun.io/). Its attribution remains in the shared footer. See `LICENSE` for the original template’s CC BY-SA 4.0 license and bundled font/icon licenses for asset-specific terms.
+
+## Detail-page sidebar
+
+Article and research/project detail pages share the home page’s left-column width. The sidebar shows your photo by default, or the entry’s `image` and `imageAlt` when supplied. Images keep their natural proportions and transparency, so transparent PNG illustrations work without a background or cropping. The section index below the image links to Markdown `##` and `###` headings; set `toc: false` to disable it. The section index stays visible while scrolling on desktop, with its own scrolling for long lists. On small screens the sidebar stacks above the article and the index scrolls with the page.
+
+## Research presentation components
+
+Set `researchModules: true` on an entry to load the scoped research CSS and JavaScript only there. In Markdown, import the Nunjucks macros:
+
+```njk
+{% from "components/research.njk" import figure, selector, comparison, gallery %}
+{{ figure('/assets/figures/example.svg', 'Description', 'Caption', 'gray') }}
+```
+
+Figure tones are `gray`, `gradient`, and `plain`. Pass `small` as the optional fifth argument to center a figure at a maximum width of 280px. Wrap figures in `<div class="figure-grid">` for a responsive grid. Selectors and galleries accept a label and a list of `{title, src, alt, caption}` objects. Comparisons accept two such objects and a range-control label; use images with matching dimensions and alignment. See `src/research/draft-project.md` for working examples. Widgets can repeat on the same page without shared IDs. Galleries use explicit buttons and never autoplay; selectors and comparison sliders support keyboard operation. Diagrams and numeric results in the draft are illustrative only.
+
+`assets/scripts/main.js` now contains the reusable scoped widgets, replacing the original global slideshow/video handlers. The unused `clarity/clarity.js` and `assets/scripts/navbar.js` are retained as original demo references and are not loaded; the former is specific to Google Parti, while navigation is handled by our own `toc.js`. Native HTML video controls can be used for future video content without restoring those global handlers.
+
+## Table captions
+
+Put a paragraph beginning `Table:` immediately after a Markdown table, separated by a blank line. It becomes a semantic caption beneath that table, numbered automatically in page order (Table 1, Table 2, …). Emphasis and links work inside captions. Tables without a caption remain unchanged and do not consume a number. See the draft project for examples.
+
+## Page language
+
+Set `lang: it` or `lang: en-GB` in article/project front matter. A compact 🇮🇹 or 🇬🇧 badge appears in a subtle gray circle beside the title in listings and detail pages, with an accessible language label. Entries default to English. The UWB project summary is based on the linked source report; it keeps fixed-split, cross-validation, and exploratory results separate.

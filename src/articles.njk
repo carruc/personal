@@ -4,13 +4,10 @@ title: Articles
 section: articles
 permalink: /articles/
 ---
+{% from "components/entry.njk" import listEntry %}
 <div class="page-heading"><h1>Articles</h1></div>
 <div class="entries">
 {% for entry in collections.articles %}
-<article class="entry">
-  <h2><a href="{{ entry.url }}">{{ entry.data.title }}</a>{% if entry.data.draft %} <span class="muted">(Draft)</span>{% endif %}</h2>
-  <p class="muted"><time datetime="{{ entry.date | isoDate }}">{{ entry.date | displayDate }}</time></p>
-  <p>{{ entry.data.summary }}</p>
-</article>
+{{ listEntry(entry) }}
 {% else %}<p class="muted">No articles published yet.</p>{% endfor %}
 </div>
