@@ -1,11 +1,13 @@
 /* Personal-site layer over Clarity's free typography and base styles. */
 body { background: #fafafa; margin: 0; }
+a { color: #8054ab; font-weight: 500; text-decoration: none; }
+a:hover { color: #603686; }
 .shell { width: min(100% - 3rem, 840px); margin-inline: auto; box-sizing: border-box; }
 .site-header { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; flex-wrap: wrap; padding-block: 2rem; border-bottom: 1px solid #e0e0e0; }
 .site-name { font-weight: 600; text-decoration: none; }
 .site-header nav { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; }
 .site-header nav a { font-size: 1rem; text-decoration: none; }
-.site-header nav a[aria-current] { text-decoration: underline; text-underline-offset: .4em; }
+.site-header nav a[aria-current] { font-weight: 700; }
 main.shell { flex: 1; padding-block: 3rem 5rem; }
 .page-heading { margin-bottom: 2rem; }
 h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.2; margin: 0 0 1.5rem; }
@@ -14,29 +16,31 @@ h3 { font-size: 1.25rem; font-weight: 500; }
 p { margin: 0 0 1.25rem; }
 .lead { font-size: 1.25rem; }
 .muted { color: #666; }
+ul { list-style-image: url("../figures/pond-leaf.svg?v=2"); }
+ul:not(:where(.inline-links, .social-icons, .bio-links, #article-toc ul)) { margin-block: .625rem 1.25rem; }
+ul:not(:where(.inline-links, .social-icons, .bio-links, #article-toc ul)) > li + li { margin-block-start: .25rem; }
+p:has(+ ul:not(:where(.inline-links, .social-icons, .bio-links, #article-toc ul))) { margin-bottom: 0; }
+ol { list-style-image: none; }
 .inline-links { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; margin: 1.5rem 0; }
 .entries { width: 100%; }
-.entry { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid #e0e0e0; }
-.entry-with-image { grid-template-columns: minmax(0, 1fr) var(--profile-column-width, 15.6rem); }
+.entry { --entry-thumbnail-size: 4.5rem; display: grid; grid-template-columns: var(--entry-thumbnail-size) minmax(0, 1fr); align-items: start; gap: 1rem; padding: .85rem 0; border-bottom: 1px solid #e0e0e0; }
 .entry:first-child { padding-top: 0; }
 .entry-content { min-width: 0; }
-.entry-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: .35rem 1rem; margin-bottom: .5rem; }
-.entry-heading h2 { margin: 0; font-size: 1.4rem; }
-.entry-heading time { margin-left: auto; white-space: nowrap; font-size: .85rem; }
-.entry-content p { margin: 0; font-size: 1rem; line-height: 1.5; }
+.entry-content h2 { margin: 0; font-size: 1.4rem; line-height: 1.15; }
+.entry-content .language-badge { width: 1.5rem; height: 1.5rem; }
+.entry-date { display: block; color: #707070; font-family: "Funnel Sans", sans-serif; font-size: .85rem; font-weight: 300; line-height: 1.2; }
 .entry .inline-links { margin: .65rem 0 0; gap: .35rem 1rem; }
 .entry .inline-links a { font-size: .9rem; }
-.entry-thumbnail { display: block; align-self: start; border-radius: 1rem; overflow: hidden; aspect-ratio: 1; }
-.entry-image { display: block; width: 100%; height: 100%; object-fit: cover; }
+.entry-thumbnail { height: var(--entry-thumbnail-size); border-radius: .5rem; overflow: hidden; }
+.entry-image { display: block; width: 100%; height: 100%; object-fit: contain; }
 @media (max-width: 600px) {
-  .entry { gap: 1rem; }
-  .entry-with-image { grid-template-columns: minmax(0, 1fr) clamp(5rem, 22vw, 8rem); }
-  .entry-heading h2 { font-size: 1.2rem; }
-  .entry-thumbnail { border-radius: .65rem; }
+  .entry-content h2 { font-size: 1.2rem; }
 }
 .cover, .prose img { max-width: 100%; height: auto; }
+.prose figure img { border-radius: .75rem; }
 .prose { max-width: 75ch; overflow-wrap: anywhere; }
-.prose ul, .prose ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+.prose ul, .prose ol { padding-left: 1.5rem; }
+.prose ol { margin-bottom: 1.5rem; }
 .prose li { list-style: inherit; }
 .prose blockquote { border: 0; background: #eceef0; border-radius: .75rem; padding: 1.5rem; margin: 1.5rem auto; max-width: 60ch; box-sizing: border-box; text-align: center; }
 .prose blockquote > :last-child { margin-bottom: 0; }
@@ -69,6 +73,10 @@ h1, h2, h3 { overflow-wrap: anywhere; }
 
 .profile-intro { display: grid; grid-template-columns: var(--profile-column-width, 15.6rem) minmax(0, 1fr); align-items: start; gap: 2rem; }
 .profile-photo { display: block; width: 100%; height: auto; border-radius: 1rem; }
+.profile-bio > h2 { padding: 0; margin-bottom: .5rem; }
+.profile-bio > ul {
+  padding-inline-start: 1.5rem;
+}
 .profile-bio p:last-child { margin-bottom: 0; }
 @media (max-width: 600px) {
   .profile-intro { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
@@ -89,7 +97,6 @@ h1, h2, h3 { overflow-wrap: anywhere; }
 .detail-sidebar #article-toc { border: 0; padding: 0; margin-top: 1.5rem; overflow-wrap: anywhere; }
 .detail-sidebar #article-toc li { margin-bottom: .6rem; line-height: 1.4; }
 .detail-sidebar #article-toc a { font-size: .9rem; text-decoration: none; }
-.detail-sidebar #article-toc a:hover { text-decoration: underline; }
 .detail-sidebar #article-toc .toc-subsection { padding-left: .9rem; }
 .prose h2, .prose h3 { scroll-margin-top: 1.5rem; }
 
@@ -98,12 +105,13 @@ h1, h2, h3 { overflow-wrap: anywhere; }
   .detail-sidebar #article-toc { position: sticky; top: 1.5rem; max-height: calc(100dvh - 3rem); overflow-y: auto; }
 }
 
-.detail-sidebar #article-toc a { color: #666; }
 .detail-sidebar #article-toc a[aria-current="location"] { color: #202020; font-weight: 700; }
 
 .prose table caption { caption-side: bottom; text-align: center; padding-top: .75rem; font-family: "Funnel Sans", sans-serif; font-size: .85rem; line-height: 1.5; color: #606060; }
 .prose table caption a { font-size: inherit; }
 
 .title-line { margin-bottom: 1rem; }
+.detail-layout .title-line:has(+ .entry-date) { margin-bottom: 0; }
+.detail-layout .entry-date { margin-bottom: 1rem; }
 .title-line > h1, .title-line > h2 { margin: 0; min-width: 0; }
 .language-badge { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; margin-inline-start: .35rem; vertical-align: middle; background: #ececec; border-radius: 50%; font-size: .95rem; line-height: 1; font-weight: 400; }

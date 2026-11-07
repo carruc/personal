@@ -1,6 +1,7 @@
 ---
 layout: base.njk
 title: Pietro Carrucciu
+summary: Research on machine learning for sensor data and Italian language models, plus projects and essays by Pietro Carrucciu.
 profile: true
 ---
 <div class="profile-intro">
@@ -20,31 +21,55 @@ aka *carruc*
 </aside>
 <div class="profile-bio">
 
-I am a Computer Science and Engineering Master's degree student at **Politecnico di Milano**. I study things.
+I’m a master’s student in **Computer Science and Engineering at Politecnico di Milano** and a graduate researcher at **NECSTLab**.
 
-## Interests
 
-*To write: introduce the topics and questions that interest me, and what I want to explore next.*
+## Current research
 
-## Active projects & latest updates
-
-*To write: describe what I am working on now. For each active project, add a short overview, a dated latest update, and a link to more details.*
+- **Language models and sensor data:** At NECSTLab, I’m studying how to encode sensor time series for language models that can help make sense of health data and translate this understanding in actionable insights. Under Professor Maurizio Magarini and PhD Arek Berc Gokdag.
+- **[Italian Pretrain Dataset and SLM](https://github.com/SamueleTondelli/pavullmo):** we are building an all-italian, high-quality pretrain dataset and training a companion small language model in the 50-100M parameter range. Currently cooking the data pipeline.
 
 ## Projects
 
-*To write: list selected projects with a one-line description, my contribution, and links to code, demos, or papers.*
+{% if collections.research.length %}
+<ul>
+{% for project in collections.research %}
+{% if loop.index <= 3 and project.url %}
+<li><a href="{{ project.url }}">{{ project.data.title }}</a></li>
+{% endif %}
+{% endfor %}
+</ul>
+{% endif %}
 
-[All research & projects →](/research/)
+[All projects →](/research/)
 
-## Articles
+## Recent articles
 
-*To write: list selected articles with a title, a short description, and a link.*
+{% if collections.articles.length %}
+<ul>
+{% for entry in collections.articles %}
+{% if loop.index <= 3 %}
+<li><a href="{{ entry.url }}">{{ entry.data.title }}</a></li>
+{% endif %}
+{% endfor %}
+</ul>
+{% endif %}
 
 [All articles →](/articles/)
 
-## Recently read books
+## Reading
 
-*To write: list books I have recently finished, with the title, author, date read, and an optional short takeaway or link to notes.*
+{% from "components/books.njk" import bookList, bookTitle %}
+
+<p>I’m currently reading {% for book in reading.currently %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif %}{% endif %}{{ bookTitle(book) }}{% endfor %}. Other books I've enjoyed as of late:</p>
+{{ bookList(reading.finished.concat(reading.literary), true) }}
+
+{% for entry in collections.articles %}
+{% if entry.page.fileSlug == 'books-ive-read' %}
+
+<p>Click here for the rest of my <a href="{{ entry.url }}">Library and Antilibrary →</a></p>
+{% endif %}
+{% endfor %}
 
 </div>
 </div>

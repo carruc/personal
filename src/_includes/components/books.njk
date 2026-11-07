@@ -1,0 +1,13 @@
+{% macro bookTitle(book) -%}
+<cite>{% if book.goodreads %}<a href="{{ book.goodreads }}">{{ book.title }}</a>{% else %}{{ book.title }}{% endif %}</cite>
+{%- endmacro %}
+
+{% macro bookList(books, selectedOnly=false) %}
+<ul>
+{% for book in books %}
+{% if not selectedOnly or book.selected %}
+<li>{{ bookTitle(book) }}{% if book.author %} by {{ book.author }}{% endif %}</li>
+{% endif %}
+{% endfor %}
+</ul>
+{% endmacro %}

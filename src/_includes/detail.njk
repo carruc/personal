@@ -16,7 +16,8 @@ toc: true
   <article>
     <header class="page-heading">
       <div class="title-line"><h1>{{ title }} {{ languageBadge(lang or 'en-GB') }}</h1></div>
-      {% if section == 'articles' %}<p class="muted"><time datetime="{{ date | isoDate }}">{{ date | displayDate }}</time></p>{% endif %}
+      {% set publishedDate = date or page.date %}
+      {% if publishedDate %}<time class="entry-date" datetime="{{ publishedDate | isoDate }}">{{ publishedDate | shortDate }}</time>{% endif %}
       <p class="lead">{{ summary }}</p>
       {% include 'project-links.njk' %}
     </header>

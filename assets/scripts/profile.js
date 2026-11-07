@@ -8,3 +8,10 @@ if (name && document.querySelector('.profile-sidebar')) {
   document.fonts.ready.then(alignProfile);
   alignProfile();
 }
+
+const bulletIcons = ['leaf', 'lily', 'hexagon', 'flower'];
+for (const item of document.querySelectorAll('ul > li')) {
+  if (getComputedStyle(item).listStyleType === 'none') continue;
+  const icon = bulletIcons[Math.floor(Math.random() * bulletIcons.length)];
+  item.style.listStyleImage = `url("/assets/figures/pond-${icon}.svg?v=2")`;
+}

@@ -1,6 +1,6 @@
 ---
 title: People localisation with UWB radar on a microcontroller
-summary: A compact heatmap model for locating up to four people, balancing localisation accuracy, causal streaming, and ESP32-S3 memory constraints.
+summary: We trained a small radar model to locate up to four people in a room with the ESP32-S3’s memory limits in mind. Joint work by Davide Metauro and I.
 date: 2026-10-23
 lang: en-GB
 draft: false
@@ -14,15 +14,13 @@ links:
 ---
 {% from "components/research.njk" import figure %}
 
-**Joint work by Davide Metauro and Pietro Carrucciu.** This page summarises our report, *Embedded and Edge AI for UWB Time-Series*.
-
 ## The task
 
-Can a small neural network estimate how many people are in a room and where they are, using radar signals rather than cameras?
+Given a few frames of radar data, can we tell how many people are in a room and where they’re standing or sitting?
 
-We use six synchronised UWB radar boards, each with three antennas, in a **4.8 × 7.2 m room**. The dataset contains 24 five-minute acquisitions at 25 Hz: **180,000 frames**, including walking, seated occupants, and empty-room recordings. The output is an unordered set of zero to four 2D positions.
+The setup uses six synchronised UWB radar boards, each with three antennas, in a **4.8 × 7.2 m room**. We had 24 five-minute recordings at 25 Hz, for **180,000 frames**. Some recordings have people walking or sitting, and some show an empty room. For each frame, the model returns a set of zero to four 2D positions.
 
-The deployment target is an ESP32-S3, with stated limits of **800 KiB model storage** and **300 KiB activation memory**, including preprocessing requirements.
+We designed for an ESP32-S3 with a budget of **800 KiB for the model** and **300 KiB for activations**, including preprocessing.
 
 {{ figure('/assets/figures/uwb/room-setup.png', 'Six radars arranged around a rectangular room, with a sample walking trajectory.', 'Room layout and a trajectory from acquisition window 19. Reproduced from report Figure 1a.', 'plain', 'small') }}
 
@@ -30,7 +28,7 @@ The deployment target is an ESP32-S3, with stated limits of **800 KiB model stor
 
 The front end removes static background, retains **30 of 120 range bins**, and extracts log-magnitude plus the sine and cosine of inter-antenna phase differences. Five feature frames form an **18 × 30 × 15** network input.
 
-A convolutional encoder first combines range, temporal, and within-radar antenna information. A dense bottleneck fuses the six radars into a room representation; an upsampling convolutional decoder produces a **36 × 24 heatmap**, with one cell per **0.2 × 0.2 m** region. The formulation follows the centre-point approach of [CenterNet](https://arxiv.org/abs/1904.07850).
+A convolutional encoder combines information across range bins, time steps and antennas on each radar. A dense layer then combines the six radar readings, and a decoder turns that representation into a **36 × 24 heatmap** of the room. Each cell covers **0.2 × 0.2 m**. We borrowed the idea of locating people by their centre points from [CenterNet](https://arxiv.org/abs/1904.07850).
 
 At inference, local peaks become coordinates after suppression and centroid refinement. A short coasting tracker bridges intermittent missed detections. The exported full-INT8 model contains **482,021 total parameters** and requires **12.14 million MACs per frame**.
 
@@ -43,11 +41,9 @@ We evaluate predictions using per-frame Hungarian matching, accepting a matched 
 | Accuracy-first INT8 | 0.9864 | 0.9641 | **0.9751** | **0.1391 m** |
 | Causal front end with submitted weights | 0.9455 | 0.9542 | 0.9498 | 0.159 m |
 
-Table: Same held-out windows, different preprocessing and temporal access. This is a pipeline comparison, not an isolated test of background removal.
+Table: Both pipelines use the same held-out windows. They differ in background removal, normalisation and which frames they can see.
 
-The accuracy-first pipeline uses complete-acquisition background and normalisation statistics, plus two future frames: **80 ms of look-ahead**. The causal variant replaces these with a gated EMA background, fixed training-derived normalisation, and a past-only five-frame stack. It removes future-frame access at a cost of **0.0253 F1** on this split.
-
-> Accuracy on recorded data and readiness for live deployment are different questions. The causal front end removes future-frame dependencies; target-device timing still needs to be measured.
+The more accurate pipeline computes background and normalisation statistics from the whole recording and looks **80 ms ahead** (two frames). For streaming, we use a gated exponential moving average for the background, use fixed normalisation statistics from the training set, and build the five-frame input from frames already available. F1 drops by **0.0253** on this split.
 
 ## Memory and generalisation
 
@@ -56,17 +52,16 @@ The accuracy-first pipeline uses complete-acquisition background and normalisati
 | Frozen INT8 model | 521.52 KiB | 800 KiB |
 | Estimated TFLite activation arena | 159.19 KiB | 300 KiB |
 
-Table: Static deployment evidence. The constraint checker reports no forbidden operations; the activation arena is an estimate, not an end-to-end measured device memory profile.
+Table: The constraint checker found no forbidden operations. We estimated the activation arena without measuring total memory use on the device.
 
-Leave-one-window-out evaluation across all 24 acquisitions yields **0.9178 pooled F1**, below the fixed held-out result. Performance deteriorates for stationary occupants: subtracting an acquisition's own mean can remove a person who barely moves. Empty-room folds are false-positive tests rather than ordinary localisation cases.
+When we held out each of the 24 recordings in turn, pooled F1 fell to **0.9178**. People sitting still were harder to detect. If someone barely moves, subtracting the recording’s mean can erase their radar return along with the background. The empty-room recordings show whether the model predicts people where there aren’t any.
 
-{{ figure('/assets/figures/uwb/cross-validation.png', 'Per-window cross-validation F1 bars, distinguishing moving subjects, mixed moving and seated subjects, and degenerate cases.', 'Leave-one-window-out results from report Figure 8. Acquisition content matters: the fixed held-out score is not a uniform guarantee across behaviours.', 'plain') }}
+{{ figure('/assets/figures/uwb/cross-validation.png', 'Per-window cross-validation F1 bars, distinguishing moving subjects, mixed moving and seated subjects, and degenerate cases.', 'F1 for each held-out recording, from Figure 8 of the report.', 'plain') }}
 
-## What remains open
+## What we’d test next
 
-- **Target-device validation:** the report's causal preprocessing and inference times, approximately 0.119 ms and 0.111 ms per frame, were measured on the evaluation host, not on the ESP32-S3.
-- **Stationary people:** background adaptation and coasting help with intermittent detection but do not establish reliable detection of fully static occupants.
-- **Longer past context:** a separate single-seed Keras screening reached 0.9603 test F1 with nine causal frames. That candidate still needs INT8 export, constraint checks, and device timing; it is not the submitted model.
-- **Controlled ablations:** the retained non-coasting baseline differs in threshold or export history. Its lower F1 cannot be attributed solely to switching coasting off.
+One idea we’d like to try is masking a different subset of radars during training. The model would have to locate people from whichever radars it could see. We could then test whether that helps when some readings are missing or noisy, and how many radars the model actually needs.
+
+We could also make use of the room’s geometry and symmetry. The six radars could be split into two groups of three based on their placement. Each group could estimate positions using the known radar locations, then we could combine the two estimates. Both ideas are still untested. We suspect they could improve localisation, and we’d compare them with the current model on the same held-out recordings.
 
 For the architecture, preprocessing equations, full experiments, and references, see the [original report](/assets/papers/uwb-report.pdf).

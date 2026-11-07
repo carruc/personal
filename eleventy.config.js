@@ -14,6 +14,7 @@ export default function (config) {
   config.addPassthroughCopy('CNAME');
   config.addFilter('isoDate', value => new Date(value).toISOString());
   config.addFilter('displayDate', value => new Intl.DateTimeFormat('en-GB', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(value)));
+  config.addFilter('shortDate', value => new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(value)));
   config.addFilter('absolute', (path, base) => new URL(path, base).href);
   config.addGlobalData('preview', preview);
   for (const kind of ['articles', 'research']) {

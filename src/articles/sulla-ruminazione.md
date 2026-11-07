@@ -7,7 +7,7 @@ image: "/assets/images/rumination.png"
 imageAlt: "Sulla Ruminazione"
 category: "psychology"
 toc: true
-draft: false
+draft: true
 ---
 
 ## Introduzione
