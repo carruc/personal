@@ -17,14 +17,15 @@
   <meta name="twitter:description" content="{{ summary or site.description }}">
   {% if image or site.image %}<meta property="og:image" content="{{ (image or site.image) | absolute(site.url) }}"><meta name="twitter:image" content="{{ (image or site.image) | absolute(site.url) }}">{% endif %}
   {% if draft or noindex %}<meta name="robots" content="noindex">{% endif %}
+  <script src="/assets/scripts/theme.js"></script>
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="stylesheet" href="/assets/stylesheets/main_free.css">
   <link rel="stylesheet" href="/assets/fontawesome-free-6.6.0-web/css/all.min.css">
-  <link rel="stylesheet" href="/assets/stylesheets/site.css?v=17">
+  <link rel="stylesheet" href="/assets/stylesheets/site.css?v=21">
   <link rel="alternate" type="application/rss+xml" title="{{ site.name }} — Articles" href="/feed.xml">
-  {% if researchModules %}<link rel="stylesheet" href="/assets/stylesheets/research.css"><script defer src="/assets/scripts/main.js"></script>{% endif %}
+  {% if researchModules %}<link rel="stylesheet" href="/assets/stylesheets/research.css?v=2"><script defer src="/assets/scripts/main.js"></script>{% endif %}
   {% if math %}<script>window.MathJax = {tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>{% endif %}
-  <script defer src="/assets/scripts/profile.js?v=4"></script>
+  <script defer src="/assets/scripts/profile.js?v=5"></script>
   {% if toc %}<script defer src="/assets/scripts/toc.js"></script>{% endif %}
 </head>
 <body>
@@ -32,6 +33,10 @@
   <header class="site-header shell">
     <div class="site-identity">
       <a class="site-name" href="/">{{ site.name }}</a>
+      <button type="button" class="theme-toggle" aria-label="Dark mode" aria-pressed="false" hidden>
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        <i class="fa-solid fa-sun" aria-hidden="true"></i>
+      </button>
       {# Header social icons temporarily disabled.
       <ul class="social-icons" aria-label="Profile links">
         {% for social in site.socials %}{% if social.url and social.header != false %}
@@ -50,8 +55,5 @@
     {% if draft %}<p class="draft-notice">Draft · local preview</p>{% endif %}
     {{ content | safe }}
   </main>
-  <footer class="shell site-footer">
-    <p>© {{ site.name }}. Built on <a href="https://shikun.io/projects/clarity">Clarity</a> by <a href="https://shikun.io/">Shikun Liu</a>. <a href="/feed.xml">RSS</a></p>
-  </footer>
 </body>
 </html>
