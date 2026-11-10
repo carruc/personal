@@ -54,7 +54,7 @@ body { background: var(--theme-page); margin: 0; }
 a { color: var(--theme-accent); font-weight: 500; text-decoration: none; }
 a:hover { color: var(--theme-accent-hover); }
 .shell { width: min(100% - 3rem, 840px); margin-inline: auto; box-sizing: border-box; }
-.site-header { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; flex-wrap: wrap; padding-block: 2rem; border-bottom: 1px solid var(--theme-divider); }
+.site-header { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; padding-block: 2rem; border-bottom: 1px solid var(--theme-divider); }
 .theme-toggle { border: 0; border-radius: 50%; background: var(--theme-badge); color: var(--theme-accent); width: 2rem; height: 2rem; padding: 0; cursor: pointer; }
 .theme-toggle:hover { background: var(--theme-badge-hover); }
 .theme-toggle:focus-visible { outline: 2px solid var(--theme-focus); outline-offset: 3px; }
